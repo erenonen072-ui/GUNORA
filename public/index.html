@@ -465,13 +465,9 @@
        ===================================================== */
 
     const articles =
-      Array.isArray(window.news)
-        ? window.news
-        : Array.isArray(window.newsData)
-          ? window.newsData
-          : Array.isArray(window.NEWS)
-            ? window.NEWS
-            : [];
+  Array.isArray(window.GUNORA_NEWS)
+    ? window.GUNORA_NEWS
+    : [];
 
 
     /* =====================================================
