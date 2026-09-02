@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/haber/:slug",
+      "destination": "/haber.html?slug=:slug"
+    },
+    {
+      "source": "/haber",
+      "destination": "/haber.html"
+    }
+  ]
+}
