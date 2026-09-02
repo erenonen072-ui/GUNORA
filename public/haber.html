@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Haber — GÜNORA PRO</title>
+
+  <meta
+    id="metaDescription"
+    name="description"
+    content="GÜNORA PRO haber"
+  >
+
+  <meta
+    id="ogTitle"
+    property="og:title"
+    content="GÜNORA PRO"
+  >
+
+  <meta
+    id="ogDescription"
+    property="og:description"
+    content="GÜNORA PRO haber"
+  >
+
+  <meta
+    id="ogImage"
+    property="og:image"
+    content=""
+  >
+
+  <meta
+    property="og:type"
+    content="article"
+  >
+
+  <meta
+    name="theme-color"
+    content="#111111"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+</head>
+
+<body>
+
+<div
+  id="readingProgress"
+  class="reading-progress"
+></div>
+
+
+<!-- HEADER -->
+
+<div class="topbar">
+
+  <div class="container topbar-inner">
+
+    <div id="todayDate">
+      GÜNORA PRO
+    </div>
+
+    <div class="topbar-right">
+
+      <span>
+        GÜNORA PRO
+      </span>
+
+      <span
+        id="liveClock"
+        class="live-clock"
+      >
+        00:00:00
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<header class="site-header">
+
+  <div class="container header-inner">
+
+    <button
+      class="mobile-menu-button"
+      id="mobileMenuButton"
+    >
+      ☰
+    </button>
+
+
+    <a
+      href="/"
+      class="logo"
+    >
+
+      <span class="logo-main">
+        GÜNORA
+      </span>
+
+      <span class="logo-pro">
+        PRO
+      </span>
+
+    </a>
+
+
+    <div class="header-actions">
+
+      <a
+        href="/"
+        class="back-home"
+      >
+        ← Ana Sayfa
+      </a>
+
+      <button
+        id="darkModeButton"
+        class="icon-button"
+      >
+        ◐
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<nav
+  class="main-nav"
+  id="mainNav"
+>
+
+  <div class="container nav-inner">
+
+    <a href="/" class="nav-link">
+      Ana Sayfa
+    </a>
+
+    <a href="/?kategori=Son Dakika" class="nav-link">
+      Son Dakika
+    </a>
+
+    <a href="/?kategori=Gündem" class="nav-link">
+      Gündem
+    </a>
+
+    <a href="/?kategori=Spor" class="nav-link">
+      Spor
+    </a>
+
+    <a href="/?kategori=Ekonomi" class="nav-link">
+      Ekonomi
+    </a>
+
+    <a href="/?kategori=Dünya" class="nav-link">
+      Dünya
+    </a>
+
+    <a href="/?kategori=Teknoloji" class="nav-link">
+      Teknoloji
+    </a>
+
+    <a href="/?kategori=Magazin" class="nav-link">
+      Magazin
+    </a>
+
+  </div>
+
+</nav>
+
+
+<main>
+
+  <div class="container article-layout">
+
+    <article
+      id="article"
+      class="article"
+    ></article>
+
+
+    <aside
+      id="articleSidebar"
+      class="sidebar article-sidebar"
+    >
+
+      <div class="sidebar-title">
+
+        <span class="section-kicker">
+          GÜNORA PRO
+        </span>
+
+        <h2>
+          Çok Okunanlar
+        </h2>
+
+      </div>
+
+      <div
+        id="popularNews"
+        class="popular-list"
+      ></div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+
+        <a
+          href="/"
+          class="footer-logo"
+        >
+          GÜNORA <span>PRO</span>
+        </a>
+
+        <p>
+          Güncel gelişmeler,
+          haberler ve son dakika.
+        </p>
+
+      </div>
+
+      <div>
+
+        <h3>
+          Kategoriler
+        </h3>
+
+        <a href="/?kategori=Gündem">
+          Gündem
+        </a>
+
+        <a href="/?kategori=Spor">
+          Spor
+        </a>
+
+        <a href="/?kategori=Ekonomi">
+          Ekonomi
+        </a>
+
+        <a href="/?kategori=Teknoloji">
+          Teknoloji
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 GÜNORA PRO
+      </span>
+
+      <span>
+        Tüm hakları saklıdır.
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="/data/news.js"></script>
+
+
+<script>
+
+"use strict";
+
+
+const NEWS =
+  Array.isArray(window.GUNORA_NEWS)
+    ? window.GUNORA_NEWS
+    : [];
+
+
+const articleElement =
+  document.getElementById(
+    "article"
+  );
+
+
+const popularNews =
+  document.getElementById(
+    "popularNews"
+  );
+
+
+function escapeHTML(value) {
+
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+function formatDate(dateString) {
+
+  const date =
+    new Date(dateString);
+
+
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
+
+
+  return new Intl.DateTimeFormat(
+    "tr-TR",
+    {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    }
+  ).format(date);
+
+}
+
+
+function getViews(article) {
+
+  const key =
+    `gunora_views_${article.id}`;
+
+
+  const stored =
+    Number(
+      localStorage.getItem(key)
+    );
+
+
+  if (
+    Number.isFinite(stored) &&
+    stored >= 0
+  ) {
+
+    return stored;
+
+  }
+
+
+  return Number(article.views) || 0;
+
+}
+
+
+function getSlug() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  return params.get("slug");
+
+}
+
+
+function increaseView(article) {
+
+  const key =
+    `gunora_views_${article.id}`;
+
+
+  let views =
+    getViews(article);
+
+
+  if (
+    sessionStorage.getItem(
+      key
+    )
+  ) {
+    return views;
+  }
+
+
+  views++;
+
+  localStorage.setItem(
+    key,
+    String(views)
+  );
+
+
+  sessionStorage.setItem(
+    key,
+    "1"
+  );
+
+
+  return views;
+
+}
+
+
+function renderPopular() {
+
+  const sorted =
+    [...NEWS]
+      .sort(
+        (a, b) =>
+          getViews(b) -
+          getViews(a)
+      )
+      .slice(0, 5);
+
+
+  popularNews.innerHTML =
+    sorted
+      .map(
+        (item, index) => `
+
+          <a
+            class="popular-item"
+            href="/haber/${encodeURIComponent(item.slug)}"
+          >
+
+            <span class="popular-number">
+              ${String(index + 1).padStart(2, "0")}
+            </span>
+
+            <div>
+
+              <span class="small-category">
+                ${escapeHTML(item.category)}
+              </span>
+
+              <h3>
+                ${escapeHTML(item.title)}
+              </h3>
+
+              <span class="popular-views">
+                ${getViews(item)} okunma
+              </span>
+
+            </div>
+
+          </a>
+
+        `
+      )
+      .join("");
+
+}
+
+
+function createShareButtons(article) {
+
+  const url =
+    window.location.href;
+
+
+  const encodedURL =
+    encodeURIComponent(url);
+
+
+  const encodedTitle =
+    encodeURIComponent(
+      article.title
+    );
+
+
+  return `
+
+    <div class="share-box">
+
+      <span>
+        Haberi paylaş
+      </span>
+
+      <div class="share-buttons">
+
+        <button
+          id="nativeShare"
+          class="share-button"
+        >
+          ↗ Paylaş
+        </button>
+
+        <a
+          href="https://wa.me/?text=${encodedTitle}%20${encodedURL}"
+          target="_blank"
+          rel="noopener"
+          class="share-button"
+        >
+          WhatsApp
+        </a>
+
+        <button
+          id="copyLink"
+          class="share-button"
+        >
+          🔗 Linki Kopyala
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function render404() {
+
+  document.title =
+    "Haber Bulunamadı — GÜNORA PRO";
+
+
+  articleElement.innerHTML = `
+
+    <div class="article-not-found">
+
+      <div class="not-found-number">
+        404
+      </div>
+
+      <h1>
+        Haber bulunamadı
+      </h1>
+
+      <p>
+        Aradığınız haber kaldırılmış,
+        taşınmış veya henüz yayınlanmamış olabilir.
+      </p>
+
+      <a
+        href="/"
+        class="primary-button"
+      >
+        Ana Sayfaya Dön
+      </a>
+
+    </div>
+
+  `;
+
+
+  document
+    .getElementById(
+      "articleSidebar"
+    )
+    .style.display =
+    "none";
+
+}
+
+
+function renderArticle(article) {
+
+  const views =
+    increaseView(article);
+
+
+  document.title =
+    `${article.title} — GÜNORA PRO`;
+
+
+  document
+    .getElementById(
+      "metaDescription"
+    )
+    .content =
+    article.summary ||
+    article.title;
+
+
+  document
+    .getElementById(
+      "ogTitle"
+    )
+    .content =
+    article.title;
+
+
+  document
+    .getElementById(
+      "ogDescription"
+    )
+    .content =
+    article.summary ||
+    article.title;
+
+
+  if (article.image) {
+
+    document
+      .getElementById(
+        "ogImage"
+      )
+      .content =
+      new URL(
+        article.image,
+        window.location.origin
+      ).href;
+
+  }
+
+
+  articleElement.innerHTML = `
+
+    <div class="article-breadcrumb">
+
+      <a href="/">
+        Ana Sayfa
+      </a>
+
+      <span>
+        /
+      </span>
+
+      <a
+        href="/?kategori=${encodeURIComponent(article.category)}"
+      >
+        ${escapeHTML(article.category)}
+      </a>
+
+    </div>
+
+
+    <div class="article-category">
+      ${escapeHTML(article.category)}
+    </div>
+
+
+    <h1 class="article-title">
+      ${escapeHTML(article.title)}
+    </h1>
+
+
+    ${
+      article.summary
+      ?
+      `
+        <p class="article-summary">
+          ${escapeHTML(article.summary)}
+        </p>
+      `
+      :
+      ""
+    }
+
+
+    <div class="article-meta">
+
+      <span>
+        ${formatDate(article.created_at)}
+      </span>
+
+      <span>
+        ${escapeHTML(article.author || "GÜNORA")}
+      </span>
+
+      <span>
+        ${views} okunma
+      </span>
+
+    </div>
+
+
+    ${
+      article.image
+      ?
+      `
+        <figure class="article-cover">
+
+          <img
+            src="${escapeHTML(article.image)}"
+            alt="${escapeHTML(article.title)}"
+          >
+
+        </figure>
+      `
+      :
+      ""
+    }
+
+
+    <div class="article-content">
+
+      ${
+        article.content ||
+        "<p>Bu haber için içerik bulunmuyor.</p>"
+      }
+
+    </div>
+
+
+    ${createShareButtons(article)}
+
+
+    <div class="article-end">
+
+      <span>
+        GÜNORA PRO
+      </span>
+
+      <p>
+        Haber hakkında gelişmeler oldukça
+        bu sayfa güncellenecektir.
+      </p>
+
+    </div>
+
+  `;
+
+
+  const nativeShare =
+    document.getElementById(
+      "nativeShare"
+    );
+
+
+  const copyLink =
+    document.getElementById(
+      "copyLink"
+    );
+
+
+  if (nativeShare) {
+
+    nativeShare.addEventListener(
+      "click",
+      async () => {
+
+        if (
+          navigator.share
+        ) {
+
+          try {
+
+            await navigator.share({
+              title: article.title,
+              text: article.summary || "",
+              url: window.location.href
+            });
+
+          } catch {}
+
+        } else {
+
+          await navigator.clipboard.writeText(
+            window.location.href
+          );
+
+          nativeShare.textContent =
+            "✓ Kopyalandı";
+
+        }
+
+      }
+    );
+
+  }
+
+
+  if (copyLink) {
+
+    copyLink.addEventListener(
+      "click",
+      async () => {
+
+        try {
+
+          await navigator.clipboard.writeText(
+            window.location.href
+          );
+
+          copyLink.textContent =
+            "✓ Kopyalandı";
+
+          setTimeout(
+            () => {
+
+              copyLink.textContent =
+                "🔗 Linki Kopyala";
+
+            },
+            1800
+          );
+
+        } catch {
+
+          prompt(
+            "Haber bağlantısı:",
+            window.location.href
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  renderPopular();
+
+}
+
+
+/* =====================================================
+   TEMA
+===================================================== */
+
+const darkModeButton =
+  document.getElementById(
+    "darkModeButton"
+  );
+
+
+if (
+  localStorage.getItem(
+    "gunora_theme"
+  ) === "dark"
+) {
+
+  document.body.classList.add(
+    "dark"
+  );
+
+}
+
+
+function updateThemeIcon() {
+
+  darkModeButton.textContent =
+    document.body.classList.contains(
+      "dark"
+    )
+    ? "☀"
+    : "◐";
+
+}
+
+
+updateThemeIcon();
+
+
+darkModeButton.addEventListener(
+  "click",
+  () => {
+
+    document.body.classList.toggle(
+      "dark"
+    );
+
+
+    localStorage.setItem(
+      "gunora_theme",
+
+      document.body.classList.contains(
+        "dark"
+      )
+      ? "dark"
+      : "light"
+    );
+
+
+    updateThemeIcon();
+
+  }
+);
+
+
+/* =====================================================
+   MOBİL MENÜ
+===================================================== */
+
+document
+  .getElementById(
+    "mobileMenuButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      document
+        .getElementById(
+          "mainNav"
+        )
+        .classList.toggle(
+          "mobile-open"
+        );
+
+    }
+  );
+
+
+/* =====================================================
+   SAAT
+===================================================== */
+
+function updateClock() {
+
+  document
+    .getElementById(
+      "liveClock"
+    )
+    .textContent =
+    new Date()
+      .toLocaleTimeString(
+        "tr-TR"
+      );
+
+}
+
+
+updateClock();
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+/* =====================================================
+   OKUMA İLERLEMESİ
+===================================================== */
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    const total =
+      document.documentElement.scrollHeight -
+      window.innerHeight;
+
+
+    if (total <= 0) {
+      return;
+    }
+
+
+    const progress =
+      (
+        window.scrollY /
+        total
+      ) * 100;
+
+
+    document
+      .getElementById(
+        "readingProgress"
+      )
+      .style.width =
+      `${Math.min(progress, 100)}%`;
+
+  }
+);
+
+
+/* =====================================================
+   HABERİ BUL
+===================================================== */
+
+const slug =
+  getSlug();
+
+
+const article =
+  NEWS.find(
+    item =>
+      item.slug === slug
+  );
+
+
+if (article) {
+
+  renderArticle(article);
+
+} else {
+
+  render404();
+
+  renderPopular();
+
+}
+
+</script>
+
+</body>
+</html>
