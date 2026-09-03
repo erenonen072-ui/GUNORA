@@ -1,1332 +1,803 @@
-<!DOCTYPE html>
-<html lang="tr">
 
-<head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Haber | GÜNORA</title>
-
-  <meta
-    name="description"
-    id="metaDescription"
-    content="GÜNORA haber"
-  >
-
-  <meta
-    name="theme-color"
-    content="#e30613"
-  >
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
-</head>
-
-<body>
-
-  <!-- OKUMA İLERLEME -->
-  <div class="reading-progress">
-    <span id="readingProgress"></span>
-  </div>
-
-  <!-- TOPBAR -->
-  <div class="topbar">
-
-    <div class="container topbar-inner">
-
-      <div class="topbar-left">
-        <span id="todayDate"></span>
-      </div>
-
-      <div class="topbar-right">
-
-        <span class="live-dot"></span>
-
-        <span>GÜNORA GÜNCEL</span>
-
-        <span class="topbar-separator">
-          •
-        </span>
-
-        <span id="currentTime">
-          00:00
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- HEADER -->
-  <header class="site-header">
-
-    <div class="container header-inner">
-
-      <a
-        href="index.html"
-        class="logo"
-      >
-
-        <span class="logo-main">
-          GÜNORA
-        </span>
-
-        <span class="logo-sub">
-          Gündemin Yeni Sesi
-        </span>
-
-      </a>
-
-      <nav class="main-nav">
-
-        <a href="index.html">
-          Ana Sayfa
-        </a>
-
-        <a href="gundem.html">
-          Gündem
-        </a>
-
-        <a href="spor.html">
-          Spor
-        </a>
-
-        <a href="ekonomi.html">
-          Ekonomi
-        </a>
-
-        <a href="dunya.html">
-          Dünya
-        </a>
-
-        <a href="teknoloji.html">
-          Teknoloji
-        </a>
-
-      </nav>
-
-      <div class="header-actions">
-
-        <button
-          class="icon-btn"
-          id="themeToggle"
-          type="button"
-        >
-          🌙
-        </button>
-
-        <a
-          class="icon-btn"
-          href="index.html"
-          aria-label="Ana sayfa"
-        >
-          ←
-        </a>
-
-      </div>
-
-    </div>
-
-  </header>
-
-  <!-- SON DAKİKA -->
-  <section class="breaking-bar">
-
-    <div class="container breaking-inner">
-
-      <div class="breaking-label">
-
-        <span class="breaking-pulse"></span>
-
-        SON DAKİKA
-
-      </div>
-
-      <div
-        class="breaking-content"
-        id="breakingNews"
-      >
-        GÜNORA
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ================= HABER ================= -->
-
-  <main class="article-page">
-
-    <div class="container">
-
-      <div
-        id="articleContainer"
-        class="article-layout"
-      >
-
-       const newsData = [
+window.GUNORA_NEWS = [
   {
     id: 1,
+    slug: "agustos-ayi-enflasyonu-aciklandi",
     title: "Ağustos ayı enflasyonu açıklandı",
-    summary: "TÜİK verilerine göre tüketici fiyatları ağustosta aylık yüzde 1,84 arttı. Yıllık enflasyon ise yüzde 31,51 olarak gerçekleşti.",
+    summary:
+      "TÜİK verilerine göre tüketici fiyatları ağustosta aylık yüzde 1,84 arttı. Yıllık enflasyon ise yüzde 31,51 olarak gerçekleşti.",
+    content: `
+      <p>Ağustos ayına ilişkin enflasyon verileri açıklandı.</p>
+
+      <p>
+        Türkiye İstatistik Kurumu tarafından açıklanan verilere göre
+        tüketici fiyat endeksi ağustos ayında aylık bazda yüzde 1,84 arttı.
+      </p>
+
+      <p>
+        Yıllık enflasyon ise yüzde 31,51 seviyesinde gerçekleşti.
+        Açıklanan veriler ekonomi gündeminin önemli başlıkları arasında
+        yer aldı.
+      </p>
+    `,
     category: "Ekonomi",
     date: "3 Eylül 2026",
     time: "10:00",
+    created_at: "2026-09-03T10:00:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Haber Merkezi",
     image: "/images/news/enflasyon.jpg",
-    featured: true
+    breaking: true,
+    featured: true,
+    views: 0
   },
 
   {
     id: 2,
+    slug: "kira-zam-orani-belli-oldu",
     title: "Kira zam oranı belli oldu",
-    summary: "Ağustos enflasyon verilerinin açıklanmasıyla eylül ayında kira sözleşmesini yenileyecek kiracıları ilgilendiren tavan zam oranı da netleşti.",
+    summary:
+      "Ağustos enflasyon verilerinin açıklanmasıyla eylül ayında kira sözleşmesini yenileyecek kiracıları ilgilendiren oran da netleşti.",
+    content: `
+      <p>
+        Ağustos ayı enflasyon verilerinin açıklanmasıyla birlikte
+        eylül ayında kira sözleşmesini yenileyecek vatandaşların
+        takip ettiği oran da gündeme geldi.
+      </p>
+
+      <p>
+        Kira artışlarında uygulanabilecek oran, ilgili yasal hesaplama
+        ve sözleşme koşulları çerçevesinde değerlendiriliyor.
+      </p>
+    `,
     category: "Ekonomi",
     date: "3 Eylül 2026",
     time: "10:20",
+    created_at: "2026-09-03T10:20:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Ekonomi",
     image: "/images/news/kira.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 3,
+    slug: "simsekten-enflasyon-mesaji",
     title: "Şimşek'ten enflasyon mesajı",
-    summary: "Hazine ve Maliye Bakanı Mehmet Şimşek, açıklanan ağustos enflasyon verilerinin ardından dezenflasyon sürecine ilişkin değerlendirmede bulundu.",
+    summary:
+      "Hazine ve Maliye Bakanı Mehmet Şimşek, açıklanan enflasyon verilerinin ardından dezenflasyon sürecine ilişkin değerlendirmede bulundu.",
+    content: `
+      <p>
+        Hazine ve Maliye Bakanı Mehmet Şimşek, açıklanan ağustos ayı
+        enflasyon verilerinin ardından ekonomi gündemine ilişkin
+        değerlendirmelerde bulundu.
+      </p>
+
+      <p>
+        Ekonomi yönetiminin fiyat istikrarına yönelik politikaları
+        ve dezenflasyon süreci yakından takip ediliyor.
+      </p>
+    `,
     category: "Ekonomi",
     date: "3 Eylül 2026",
     time: "11:15",
+    created_at: "2026-09-03T11:15:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Ekonomi",
     image: "/images/news/simsek.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 4,
+    slug: "altin-fiyatlarinda-hareketlilik-suruyor",
     title: "Altın fiyatlarında hareketlilik sürüyor",
-    summary: "Küresel piyasalarda altın fiyatlarının seyri yatırımcıların gündeminde. Ons altın ağustos ayını güçlü bir yükselişle tamamladı.",
+    summary:
+      "Küresel piyasalarda altın fiyatlarının seyri yatırımcıların gündeminde.",
+    content: `
+      <p>
+        Altın piyasasında hareketlilik devam ediyor. Küresel ekonomik
+        gelişmeler ve piyasalardaki beklentiler değerli metalin
+        seyrinde etkili oluyor.
+      </p>
+
+      <p>
+        Yatırımcılar ons altın ve yurt içindeki gram altın fiyatlarını
+        yakından takip ediyor.
+      </p>
+    `,
     category: "Ekonomi",
     date: "3 Eylül 2026",
     time: "16:36",
+    created_at: "2026-09-03T16:36:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Ekonomi",
     image: "/images/news/altin.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 5,
+    slug: "agustos-ayinda-ihracatta-yeni-rekor",
     title: "Ağustos ayında ihracatta yeni rekor",
-    summary: "Türkiye'nin ağustos ayı ihracatı geçen yılın aynı dönemine göre artış göstererek yeni bir aylık rekora ulaştı.",
+    summary:
+      "Türkiye'nin ağustos ayı ihracatında yeni gelişmeler açıklandı.",
+    content: `
+      <p>
+        Türkiye'nin dış ticaret gündeminde ağustos ayı ihracat
+        performansı öne çıktı.
+      </p>
+
+      <p>
+        İhracat rakamları sektörler ve dış ticaret dengesi açısından
+        yakından takip ediliyor.
+      </p>
+    `,
     category: "Ekonomi",
     date: "3 Eylül 2026",
     time: "14:30",
+    created_at: "2026-09-03T14:30:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Ekonomi",
     image: "/images/news/ihracat.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 6,
+    slug: "fenerbahce-besiktas-derbisinin-hakemi-belli-oldu",
     title: "Fenerbahçe-Beşiktaş derbisinin hakemi belli oldu",
-    summary: "Süper Lig'in 4. haftasında oynanacak Fenerbahçe-Beşiktaş karşılaşmasını Halil Umut Meler yönetecek.",
+    summary:
+      "Süper Lig'in 4. haftasında oynanacak Fenerbahçe-Beşiktaş karşılaşmasını Halil Umut Meler yönetecek.",
+    content: `
+      <p>
+        Trendyol Süper Lig'de futbolseverlerin merakla beklediği
+        Fenerbahçe-Beşiktaş derbisinin hakemi belli oldu.
+      </p>
+
+      <p>
+        Kritik mücadelede Halil Umut Meler düdük çalacak.
+      </p>
+
+      <p>
+        Dev karşılaşma öncesinde iki takımın hazırlıkları ve maç
+        kadrolarına ilişkin gelişmeler takip ediliyor.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "15:45",
+    created_at: "2026-09-03T15:45:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/fenerbahce-besiktas.jpg",
-    featured: true
+    breaking: true,
+    featured: true,
+    views: 0
   },
 
   {
     id: 7,
+    slug: "derbi-icin-geri-sayim-basladi",
     title: "Derbi için geri sayım başladı",
-    summary: "Fenerbahçe ile Beşiktaş arasında oynanacak dev karşılaşma öncesinde iki takımda hazırlıklar devam ediyor.",
+    summary:
+      "Fenerbahçe ile Beşiktaş arasında oynanacak dev karşılaşma öncesinde iki takımda hazırlıklar devam ediyor.",
+    content: `
+      <p>
+        Fenerbahçe ile Beşiktaş arasındaki mücadele öncesinde
+        futbol gündeminde heyecan giderek artıyor.
+      </p>
+
+      <p>
+        İki takım da kritik karşılaşmadan galibiyetle ayrılmak
+        için hazırlıklarını sürdürüyor.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "16:00",
+    created_at: "2026-09-03T16:00:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/derbi.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 8,
+    slug: "besiktas-derbi-hazirliklarini-surdurdu",
     title: "Beşiktaş derbi hazırlıklarını sürdürdü",
-    summary: "Siyah-beyazlı ekip, Süper Lig'in 4. haftasında Fenerbahçe ile oynayacağı mücadele öncesi çalışmalarına devam etti.",
+    summary:
+      "Siyah-beyazlı ekip, Fenerbahçe karşılaşması öncesi çalışmalarına devam etti.",
+    content: `
+      <p>
+        Beşiktaş, Süper Lig'de oynayacağı Fenerbahçe derbisi
+        öncesindeki hazırlıklarını sürdürüyor.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "14:10",
+    created_at: "2026-09-03T14:10:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/besiktas.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 9,
+    slug: "besiktasin-yeni-transferi-istanbula-geliyor",
     title: "Beşiktaş'ın yeni transferi İstanbul'a geliyor",
-    summary: "Siyah-beyazlıların yeni savunma oyuncusu Ümit Akdağ'ın İstanbul'a geliş saati belli oldu.",
+    summary:
+      "Beşiktaş'ın yeni savunma oyuncusu Ümit Akdağ'ın İstanbul'a geliş saati belli oldu.",
+    content: `
+      <p>
+        Beşiktaş'ın yeni transferi Ümit Akdağ için İstanbul'a geliş
+        süreci futbol gündeminde öne çıktı.
+      </p>
+
+      <p>
+        Siyah-beyazlılarda yeni sezon kadro yapılanması kapsamında
+        transfer çalışmaları devam ediyor.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "13:40",
+    created_at: "2026-09-03T13:40:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/umit-akdag.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 10,
+    slug: "fenerbahcede-uefa-sorusturmasi-gundemde",
     title: "Fenerbahçe'de UEFA soruşturması gündemde",
-    summary: "Fenerbahçe, Lyon karşılaşmasının ardından yaşanan olaylarla ilgili UEFA'nın Matteo Guendouzi ve Mason Greenwood hakkında disiplin süreci başlattığını açıkladı.",
+    summary:
+      "Fenerbahçe'nin Avrupa mücadelesi sonrası yaşanan gelişmeler UEFA gündemine taşındı.",
+    content: `
+      <p>
+        Fenerbahçe'nin Avrupa kupalarındaki mücadelesinin ardından
+        yaşanan gelişmeler UEFA'nın gündemine geldi.
+      </p>
+
+      <p>
+        Süreçle ilgili resmi açıklamalar ve disiplin kurulu kararları
+        takip ediliyor.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "15:10",
+    created_at: "2026-09-03T15:10:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/uefa.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 11,
+    slug: "galatasarayda-basaksehir-maci-hazirliklari",
     title: "Galatasaray'da Başakşehir maçı hazırlıkları",
-    summary: "Sarı-kırmızılı ekip, Süper Lig'in 4. haftasında oynayacağı Başakşehir karşılaşmasına hazırlanıyor.",
+    summary:
+      "Sarı-kırmızılı ekip, Başakşehir karşılaşması öncesinde hazırlıklarını sürdürüyor.",
+    content: `
+      <p>
+        Galatasaray, Süper Lig'deki Başakşehir karşılaşması öncesinde
+        çalışmalarına devam ediyor.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "12:50",
+    created_at: "2026-09-03T12:50:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/galatasaray.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 12,
+    slug: "filenin-sultanlari-almanya-karsisinda",
     title: "Filenin Sultanları Almanya karşısında",
-    summary: "A Milli Kadın Voleybol Takımı, Avrupa Voleybol Şampiyonası çeyrek finalinde Almanya ile karşı karşıya geliyor.",
+    summary:
+      "A Milli Kadın Voleybol Takımı, Avrupa Voleybol Şampiyonası'nda Almanya ile karşılaşıyor.",
+    content: `
+      <p>
+        A Milli Kadın Voleybol Takımı, Avrupa Şampiyonası'ndaki
+        mücadelesinde Almanya karşısına çıkıyor.
+      </p>
+
+      <p>
+        Milli takımın hedefi karşılaşmadan galibiyetle ayrılarak
+        yoluna devam etmek.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "19:00",
+    created_at: "2026-09-03T19:00:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/filenin-sultanlari.jpg",
-    featured: true
+    breaking: true,
+    featured: true,
+    views: 0
   },
 
   {
     id: 13,
+    slug: "super-ligde-4-hafta-hakemleri-aciklandi",
     title: "Süper Lig'de 4. hafta hakemleri açıklandı",
-    summary: "Türkiye Futbol Federasyonu, Trendyol Süper Lig'in 4. haftasında görev yapacak hakemleri duyurdu.",
+    summary:
+      "Türkiye Futbol Federasyonu, Süper Lig'in 4. haftasında görev yapacak hakemleri duyurdu.",
+    content: `
+      <p>
+        Trendyol Süper Lig'de 4. hafta karşılaşmalarında görev
+        yapacak hakemler belli oldu.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "15:30",
+    created_at: "2026-09-03T15:30:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/tff.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 14,
+    slug: "trabzonsporda-transfer-hareketliligi",
     title: "Trabzonspor'da transfer hareketliliği",
-    summary: "Karadeniz ekibinde transfer döneminin son günleri yaklaşırken kadro planlamasıyla ilgili çalışmalar devam ediyor.",
+    summary:
+      "Trabzonspor'da kadro planlaması kapsamında transfer çalışmaları devam ediyor.",
+    content: `
+      <p>
+        Trabzonspor'da yeni sezon kadro planlamasına yönelik çalışmalar
+        sürüyor.
+      </p>
+    `,
     category: "Spor",
     date: "3 Eylül 2026",
     time: "13:20",
+    created_at: "2026-09-03T13:20:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Spor",
     image: "/images/news/trabzonspor.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 15,
+    slug: "mit-baskani-kalindan-kritik-gorusme",
     title: "MİT Başkanı Kalın'dan kritik görüşme",
-    summary: "MİT Başkanı İbrahim Kalın, Yunanistan Ulusal İstihbarat Teşkilatı Başkanı Demiris ile görüştü.",
+    summary:
+      "MİT Başkanı İbrahim Kalın, Yunanistan Ulusal İstihbarat Teşkilatı Başkanı Demiris ile görüştü.",
+    content: `
+      <p>
+        Milli İstihbarat Teşkilatı Başkanı İbrahim Kalın'ın
+        gerçekleştirdiği görüşme gündeme ilişkin önemli başlıklardan
+        biri oldu.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "16:55",
+    created_at: "2026-09-03T16:55:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Gündem",
     image: "/images/news/mit.jpg",
-    featured: true
+    breaking: true,
+    featured: true,
+    views: 0
   },
 
   {
     id: 16,
+    slug: "gemi-kazasinda-sorusturma-suruyor",
     title: "Gemi kazasında soruşturma sürüyor",
-    summary: "Marmara Denizi'ndeki gemi kazasının ardından soruşturma kapsamında kayıtlar ve telsiz görüşmeleri incelemeye alındı.",
+    summary:
+      "Marmara Denizi'ndeki gemi kazasının ardından soruşturma devam ediyor.",
+    content: `
+      <p>
+        Marmara Denizi'nde meydana gelen gemi kazasının ardından
+        başlatılan soruşturma kapsamında çalışmalar sürüyor.
+      </p>
+
+      <p>
+        Kazayla ilgili elde edilen kayıtlar ve diğer deliller
+        incelemeye alınıyor.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "16:28",
+    created_at: "2026-09-03T16:28:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Gündem",
     image: "/images/news/gemi-kazasi.jpg",
-    featured: true
+    breaking: true,
+    featured: true,
+    views: 0
   },
 
   {
     id: 17,
+    slug: "gemi-kazasinda-6-supheli-adliyeye-sevk-edildi",
     title: "Gemi kazasında 6 şüpheli adliyeye sevk edildi",
-    summary: "Alsu gemisinde görev yapan 9 şüpheliden 6'sı soruşturma kapsamında adliyeye sevk edildi.",
+    summary:
+      "Soruşturma kapsamında 6 şüpheli adliyeye sevk edildi.",
+    content: `
+      <p>
+        Gemi kazasıyla ilgili yürütülen soruşturmada 6 şüpheli
+        adliyeye sevk edildi.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "16:48",
+    created_at: "2026-09-03T16:48:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Gündem",
     image: "/images/news/alsu.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 18,
+    slug: "sariyerde-yangin-8-kisi-kurtarildi",
     title: "Sarıyer'de yangın: 8 kişi kurtarıldı",
-    summary: "İstanbul Sarıyer'de çıkan yangında çatıda mahsur kalan 8 kişi ekiplerin çalışmasıyla kurtarıldı.",
+    summary:
+      "İstanbul Sarıyer'de çıkan yangında çatıda mahsur kalan 8 kişi kurtarıldı.",
+    content: `
+      <p>
+        İstanbul Sarıyer'de bir binada yangın çıktı.
+        Yangına ekipler tarafından müdahale edildi.
+      </p>
+
+      <p>
+        Çatıda mahsur kalan 8 kişi ekiplerin çalışmasıyla kurtarıldı.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "16:20",
+    created_at: "2026-09-03T16:20:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Gündem",
     image: "/images/news/sariyer-yangin.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 19,
+    slug: "msbden-suriye-aciklamasi",
     title: "MSB'den Suriye açıklaması",
-    summary: "Milli Savunma Bakanlığı, Suriye'ye yönelik desteğin devam edeceğini açıkladı.",
+    summary:
+      "Milli Savunma Bakanlığı, Suriye'ye ilişkin açıklamalarda bulundu.",
+    content: `
+      <p>
+        Milli Savunma Bakanlığı, Suriye'deki gelişmelere ilişkin
+        değerlendirmelerde bulundu.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "12:00",
+    created_at: "2026-09-03T12:00:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Gündem",
     image: "/images/news/msb.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 20,
+    slug: "gulistan-doku-sorusturmasinda-yeni-gelisme",
     title: "Gülistan Doku soruşturmasında yeni gelişme",
-    summary: "Gülistan Doku soruşturması kapsamında tutuklu sayısının 32'ye yükseldiği bildirildi.",
+    summary:
+      "Gülistan Doku soruşturmasıyla ilgili yeni gelişmeler yaşandı.",
+    content: `
+      <p>
+        Gülistan Doku dosyasına ilişkin soruşturma sürecinde yeni
+        gelişmeler yaşandı.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "15:50",
+    created_at: "2026-09-03T15:50:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Gündem",
     image: "/images/news/gulistan-doku.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 21,
+    slug: "putinden-ukrayna-aciklamasi",
     title: "Putin'den Ukrayna açıklaması",
-    summary: "Rusya Devlet Başkanı Vladimir Putin, Rusya ile Ukrayna arasında anlaşmaya varılması için şans bulunduğunu söyledi.",
+    summary:
+      "Rusya Devlet Başkanı Vladimir Putin, Rusya ile Ukrayna arasında anlaşmaya varılması konusunda açıklamalarda bulundu.",
+    content: `
+      <p>
+        Rusya Devlet Başkanı Vladimir Putin, Rusya-Ukrayna savaşı
+        ve olası müzakere sürecine ilişkin değerlendirmelerde bulundu.
+      </p>
+    `,
     category: "Dünya",
     date: "3 Eylül 2026",
     time: "16:38",
+    created_at: "2026-09-03T16:38:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Dünya",
     image: "/images/news/putin.jpg",
-    featured: true
+    breaking: true,
+    featured: true,
+    views: 0
   },
 
   {
     id: 22,
+    slug: "libyada-petrol-deposuna-iha-saldirisi",
     title: "Libya'da petrol deposuna İHA saldırısı",
-    summary: "Libya'nın başkenti Trablus'ta bir petrol deposuna insansız hava aracı saldırısı düzenlendi.",
+    summary:
+      "Libya'nın başkenti Trablus'ta bir petrol deposuna İHA saldırısı düzenlendi.",
+    content: `
+      <p>
+        Libya'nın başkenti Trablus'ta petrol tesislerinden birinin
+        hedef alındığı bildirildi.
+      </p>
+    `,
     category: "Dünya",
     date: "3 Eylül 2026",
     time: "16:15",
+    created_at: "2026-09-03T16:15:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Dünya",
     image: "/images/news/libya.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 23,
+    slug: "almanyada-savunma-sirketi-onunde-kundaklama-girisimi",
     title: "Almanya'da savunma şirketi önünde kundaklama girişimi",
-    summary: "Almanya'da bir savunma sanayii şirketinin önünde kundaklama girişimi yaşandı.",
+    summary:
+      "Almanya'da bir savunma sanayii şirketinin önünde kundaklama girişimi yaşandı.",
+    content: `
+      <p>
+        Almanya'da bir savunma sanayii şirketinin önünde
+        kundaklama girişimi yaşandığı bildirildi.
+      </p>
+    `,
     category: "Dünya",
     date: "3 Eylül 2026",
     time: "16:26",
+    created_at: "2026-09-03T16:26:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Dünya",
     image: "/images/news/almanya.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 24,
+    slug: "irandan-uluslararasi-basvuru",
     title: "İran'dan uluslararası başvuru",
-    summary: "İran Kızılayı, Hürmüzgan'daki bir düğün evine yönelik saldırıyla ilgili konuyu Uluslararası Ceza Mahkemesi Savcılığına taşıdı.",
+    summary:
+      "İran Kızılayı, Hürmüzgan'daki saldırıyla ilgili uluslararası başvuruda bulundu.",
+    content: `
+      <p>
+        İran Kızılayı tarafından Hürmüzgan'daki saldırıyla ilgili
+        uluslararası hukuk mekanizmalarına başvuru yapıldığı bildirildi.
+      </p>
+    `,
     category: "Dünya",
     date: "3 Eylül 2026",
     time: "16:10",
+    created_at: "2026-09-03T16:10:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Dünya",
     image: "/images/news/iran.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 25,
+    slug: "abd-ve-sri-lankadan-ortak-operasyon",
     title: "ABD ve Sri Lanka'dan ortak operasyon",
-    summary: "ABD ve Sri Lanka makamlarının Pakistan merkezli olduğu belirtilen bir uyuşturucu şebekesine yönelik operasyon gerçekleştirdiği bildirildi.",
+    summary:
+      "ABD ve Sri Lanka makamları ortak bir operasyon gerçekleştirdi.",
+    content: `
+      <p>
+        ABD ve Sri Lanka makamlarının gerçekleştirdiği ortak operasyon
+        uluslararası gündeme yansıdı.
+      </p>
+    `,
     category: "Dünya",
     date: "3 Eylül 2026",
     time: "14:45",
+    created_at: "2026-09-03T14:45:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Dünya",
     image: "/images/news/abd-srilanka.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 26,
+    slug: "hafta-sonu-hava-durumu",
     title: "Hafta sonu hava durumu belli oluyor",
-    summary: "Türkiye genelinde hafta sonu sıcak hava etkisini sürdürürken bazı bölgelerde yerel sağanak yağış bekleniyor.",
+    summary:
+      "Türkiye genelinde hafta sonu hava durumuna ilişkin tahminler açıklandı.",
+    content: `
+      <p>
+        Meteoroloji verilerine göre hafta sonuna ilişkin hava durumu
+        tahminleri vatandaşların gündeminde.
+      </p>
+
+      <p>
+        Bölgeler arasında sıcaklık ve yağış açısından farklılıklar
+        yaşanması bekleniyor.
+      </p>
+    `,
     category: "Yaşam",
     date: "3 Eylül 2026",
     time: "16:53",
+    created_at: "2026-09-03T16:53:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Yaşam",
     image: "/images/news/hava-durumu.jpg",
-    featured: true
+    breaking: false,
+    featured: true,
+    views: 0
   },
 
   {
     id: 27,
+    slug: "kisisel-verileri-koruyamayan-sirkete-ceza",
     title: "Kişisel verileri koruyamayan şirkete ceza",
-    summary: "Kişisel verilerin korunmasına ilişkin yükümlülükleri yerine getirmeyen bir şirkete 1 milyon lira idari para cezası uygulandı.",
+    summary:
+      "Kişisel verilerin korunmasına ilişkin yükümlülükleri yerine getirmeyen bir şirkete idari para cezası uygulandı.",
+    content: `
+      <p>
+        Kişisel verilerin korunmasına yönelik yükümlülükler kapsamında
+        yapılan incelemeler sonucunda bir şirkete idari yaptırım uygulandı.
+      </p>
+    `,
     category: "Teknoloji",
     date: "3 Eylül 2026",
     time: "11:11",
+    created_at: "2026-09-03T11:11:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Teknoloji",
     image: "/images/news/kisisel-veri.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 28,
+    slug: "meyve-suyu-sektorunde-yeni-donem",
     title: "Meyve suyu sektöründe yeni dönem",
-    summary: "Meyve suyu ürünlerinde tatlandırıcı kullanımına ilişkin yeni düzenleme taslağı gündeme geldi.",
+    summary:
+      "Meyve suyu ürünlerinde tatlandırıcı kullanımına ilişkin yeni düzenleme gündemde.",
+    content: `
+      <p>
+        Meyve suyu ürünlerine ilişkin yeni düzenleme çalışmaları
+        sektörün gündemine geldi.
+      </p>
+    `,
     category: "Yaşam",
     date: "3 Eylül 2026",
     time: "14:00",
+    created_at: "2026-09-03T14:00:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Yaşam",
     image: "/images/news/meyve-suyu.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 29,
+    slug: "eylul-ayinda-gundem-yogun",
     title: "Eylül ayında gündem yoğun",
-    summary: "Yeni ayla birlikte ekonomi, eğitim, spor ve siyasette vatandaşların yakından takip edeceği birçok gelişme gündemde.",
+    summary:
+      "Yeni ayla birlikte ekonomi, eğitim, spor ve gündemde birçok başlık öne çıkıyor.",
+    content: `
+      <p>
+        Eylül ayının başlamasıyla birlikte Türkiye'nin gündeminde
+        ekonomi, eğitim, spor ve günlük yaşamla ilgili birçok konu
+        öne çıkıyor.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "09:30",
+    created_at: "2026-09-03T09:30:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Haber Merkezi",
     image: "/images/news/eylul-gundemi.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   },
 
   {
     id: 30,
+    slug: "turkiyenin-gundeminde-yogun-gun",
     title: "Türkiye'nin gündeminde yoğun gün",
-    summary: "Türkiye'de bugün ekonomi, spor ve gündem başlıkları öne çıkarken yeni gelişmeler yakından takip ediliyor.",
+    summary:
+      "Türkiye'de bugün ekonomi, spor ve gündem başlıkları öne çıkıyor.",
+    content: `
+      <p>
+        Türkiye'de günün öne çıkan gelişmeleri ekonomi, spor,
+        gündem ve dünya başlıklarında yoğunlaşıyor.
+      </p>
+
+      <p>
+        GÜNORA olarak gün boyunca gelişmeleri takip ederek
+        okurlarımıza aktarmaya devam ediyoruz.
+      </p>
+    `,
     category: "Gündem",
     date: "3 Eylül 2026",
     time: "17:00",
+    created_at: "2026-09-03T17:00:00+03:00",
     source: "GÜNORA",
+    author: "GÜNORA Haber Merkezi",
     image: "/images/news/gunun-ozeti.jpg",
-    featured: false
+    breaking: false,
+    featured: false,
+    views: 0
   }
 ];
-      </div>
-
-    </div>
-
-  </main>
-
-  <!-- FOOTER -->
-
-  <footer class="site-footer">
-
-    <div class="container">
-
-      <div class="footer-main">
-
-        <div class="footer-brand">
-
-          <a
-            href="index.html"
-            class="footer-logo"
-          >
-            GÜNORA
-          </a>
-
-          <p>
-            Gündemin Yeni Sesi.
-            Türkiye ve dünyadan gelişmeleri
-            hızlı, sade ve anlaşılır şekilde takip edin.
-          </p>
-
-        </div>
-
-        <div class="footer-column">
-
-          <h4>Kategoriler</h4>
-
-          <a href="gundem.html">
-            Gündem
-          </a>
-
-          <a href="spor.html">
-            Spor
-          </a>
-
-          <a href="ekonomi.html">
-            Ekonomi
-          </a>
-
-          <a href="dunya.html">
-            Dünya
-          </a>
-
-          <a href="teknoloji.html">
-            Teknoloji
-          </a>
-
-        </div>
-
-        <div class="footer-column">
-
-          <h4>GÜNORA</h4>
-
-          <a href="hakkimizda.html">
-            Hakkımızda
-          </a>
-
-          <a href="iletisim.html">
-            İletişim
-          </a>
-
-          <a href="gizlilik.html">
-            Gizlilik
-          </a>
-
-          <a href="kullanim-sartlari.html">
-            Kullanım Şartları
-          </a>
-
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-
-        <span>
-          ©
-          <span id="footerYear"></span>
-          GÜNORA
-        </span>
-
-        <span>
-          Gündemin Yeni Sesi
-        </span>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-  <!-- NEWS DATA -->
-  <script src="data/news.js"></script>
-
-  <script>
-
-    "use strict";
-
-    const NEWS =
-      Array.isArray(window.GUNORA_NEWS)
-        ? window.GUNORA_NEWS
-        : [];
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-    const slug =
-      params.get("slug");
-
-    const container =
-      document.getElementById(
-        "articleContainer"
-      );
-
-    const escapeHTML = (value) => {
-
-      return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-    };
-
-    const formatDate = (dateString) => {
-
-      const date =
-        new Date(dateString);
-
-      if (Number.isNaN(date.getTime())) {
-        return "";
-      }
-
-      return new Intl.DateTimeFormat(
-        "tr-TR",
-        {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-          hour: "2-digit",
-          minute: "2-digit"
-        }
-      ).format(date);
-
-    };
-
-    const getArticleUrl = (news) => {
-
-      return "haber.html?slug=" +
-        encodeURIComponent(
-          news.slug || ""
-        );
-
-    };
-
-    const getImage = (news) => {
-
-      return news.image || "";
-
-    };
-
-    const currentArticle =
-      NEWS.find(
-        news =>
-          news.slug === slug
-      );
-
-    /* ================= SAAT ================= */
-
-    const updateClock = () => {
-
-      const now =
-        new Date();
-
-      document.getElementById(
-        "currentTime"
-      ).textContent =
-        now.toLocaleTimeString(
-          "tr-TR",
-          {
-            hour: "2-digit",
-            minute: "2-digit"
-          }
-        );
-
-      document.getElementById(
-        "todayDate"
-      ).textContent =
-        now.toLocaleDateString(
-          "tr-TR",
-          {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-          }
-        );
-
-    };
-
-    updateClock();
-
-    setInterval(
-      updateClock,
-      1000
-    );
-
-    document.getElementById(
-      "footerYear"
-    ).textContent =
-      new Date().getFullYear();
-
-    /* ================= HATA ================= */
-
-    if (!currentArticle) {
-
-      document.title =
-        "Haber bulunamadı | GÜNORA";
-
-      container.innerHTML = `
-
-        <div class="article-main">
-
-          <div class="article-breadcrumb">
-
-            <a href="index.html">
-              Ana Sayfa
-            </a>
-
-            <span>›</span>
-
-            <span>Haber bulunamadı</span>
-
-          </div>
-
-          <h1 class="article-title">
-            Haber bulunamadı
-          </h1>
-
-          <p class="article-summary">
-            Aradığınız haber mevcut değil,
-            kaldırılmış olabilir veya bağlantı
-            hatalı olabilir.
-          </p>
-
-          <br>
-
-          <a
-            href="index.html"
-            class="newsletter-btn"
-          >
-            Ana sayfaya dön →
-          </a>
-
-        </div>
-
-      `;
-
-    }
-
-    /* ================= HABER ================= */
-
-    if (currentArticle) {
-
-      document.title =
-        `${currentArticle.title} | GÜNORA`;
-
-      document.getElementById(
-        "metaDescription"
-      ).setAttribute(
-        "content",
-        currentArticle.summary || ""
-      );
-
-      const image =
-        getImage(currentArticle);
-
-      const coverHTML = image
-
-        ? `
-          <img
-            class="article-cover"
-            src="${escapeHTML(image)}"
-            alt="${escapeHTML(currentArticle.title)}"
-          >
-        `
-
-        : `
-          <div
-            class="article-cover image-placeholder"
-            style="height:420px;"
-          >
-            <span>GÜNORA</span>
-          </div>
-        `;
-
-      container.innerHTML = `
-
-        <article class="article-main">
-
-          <div class="article-breadcrumb">
-
-            <a href="index.html">
-              Ana Sayfa
-            </a>
-
-            <span>›</span>
-
-            <a
-              href="${escapeHTML(
-                currentArticle.category === "Gündem"
-                  ? "gundem.html"
-                  : currentArticle.category === "Spor"
-                    ? "spor.html"
-                    : currentArticle.category === "Ekonomi"
-                      ? "ekonomi.html"
-                      : currentArticle.category === "Dünya"
-                        ? "dunya.html"
-                        : "teknoloji.html"
-              )}"
-            >
-              ${escapeHTML(
-                currentArticle.category
-              )}
-            </a>
-
-            <span>›</span>
-
-            <span>Haber</span>
-
-          </div>
-
-          <div class="article-category">
-
-            ${escapeHTML(
-              currentArticle.category
-            )}
-
-          </div>
-
-          <h1 class="article-title">
-
-            ${escapeHTML(
-              currentArticle.title
-            )}
-
-          </h1>
-
-          <p class="article-summary">
-
-            ${escapeHTML(
-              currentArticle.summary
-            )}
-
-          </p>
-
-          <div class="article-meta">
-
-            <span>
-              ${escapeHTML(
-                currentArticle.author ||
-                "GÜNORA"
-              )}
-            </span>
-
-            <span>•</span>
-
-            <span>
-              ${escapeHTML(
-                currentArticle.source ||
-                "GÜNORA"
-              )}
-            </span>
-
-            <span>•</span>
-
-            <time>
-              ${formatDate(
-                currentArticle.created_at
-              )}
-            </time>
-
-          </div>
-
-          ${coverHTML}
-
-          <div class="article-content">
-
-            ${
-              currentArticle.content ||
-              "<p>Haber içeriği bulunamadı.</p>"
-            }
-
-          </div>
-
-          <div class="article-share">
-
-            <div class="article-share-title">
-              Haberi paylaş
-            </div>
-
-            <div class="share-buttons">
-
-              <button
-                class="share-button"
-                id="copyLink"
-                type="button"
-              >
-                🔗 Linki Kopyala
-              </button>
-
-              <button
-                class="share-button"
-                id="nativeShare"
-                type="button"
-              >
-                ↗ Paylaş
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <aside class="sidebar">
-
-          <div class="sidebar-box">
-
-            <div class="sidebar-title">
-
-              <span class="red-line"></span>
-
-              Son Haberler
-
-            </div>
-
-            <div class="popular-list">
-
-              ${
-                NEWS
-                  .filter(
-                    news =>
-                      news.slug !==
-                      currentArticle.slug
-                  )
-                  .slice(0, 6)
-                  .map(news => {
-
-                    return `
-
-                      <a
-                        href="${getArticleUrl(news)}"
-                        class="popular-item"
-                      >
-
-                        <span
-                          class="popular-number"
-                        >
-                          •
-                        </span>
-
-                        <span
-                          class="popular-content"
-                        >
-
-                          <small>
-                            ${escapeHTML(
-                              news.category
-                            )}
-                          </small>
-
-                          <strong>
-                            ${escapeHTML(
-                              news.title
-                            )}
-                          </strong>
-
-                        </span>
-
-                      </a>
-
-                    `;
-
-                  })
-                  .join("")
-              }
-
-            </div>
-
-          </div>
-
-          <div class="sidebar-box newsletter-box">
-
-            <span class="section-kicker">
-              GÜNORA
-            </span>
-
-            <h3>
-              Gündemi takip et
-            </h3>
-
-            <p>
-              Türkiye ve dünyadan gelişmeleri
-              GÜNORA ile takip edin.
-            </p>
-
-            <a
-              href="index.html"
-              class="newsletter-btn"
-            >
-              Ana sayfaya dön →
-            </a>
-
-          </div>
-
-        </aside>
-
-      `;
-
-      /* ================= GÖRÜNTÜLENME ================= */
-
-      const viewedKey =
-        "gunora-viewed-" +
-        currentArticle.id;
-
-      if (!sessionStorage.getItem(viewedKey)) {
-
-        currentArticle.views =
-          Number(currentArticle.views || 0) + 1;
-
-        sessionStorage.setItem(
-          viewedKey,
-          "1"
-        );
-
-      }
-
-      /* ================= KOPYALA ================= */
-
-      const copyButton =
-        document.getElementById(
-          "copyLink"
-        );
-
-      if (copyButton) {
-
-        copyButton.addEventListener(
-          "click",
-          async () => {
-
-            try {
-
-              await navigator.clipboard.writeText(
-                window.location.href
-              );
-
-              copyButton.textContent =
-                "✓ Kopyalandı";
-
-              setTimeout(
-                () => {
-
-                  copyButton.textContent =
-                    "🔗 Linki Kopyala";
-
-                },
-                1800
-              );
-
-            } catch {
-
-              alert(
-                "Bağlantı kopyalanamadı."
-              );
-
-            }
-
-          }
-        );
-
-      }
-
-      /* ================= PAYLAŞ ================= */
-
-      const shareButton =
-        document.getElementById(
-          "nativeShare"
-        );
-
-      if (shareButton) {
-
-        shareButton.addEventListener(
-          "click",
-          async () => {
-
-            if (
-              navigator.share
-            ) {
-
-              try {
-
-                await navigator.share({
-
-                  title:
-                    currentArticle.title,
-
-                  text:
-                    currentArticle.summary,
-
-                  url:
-                    window.location.href
-
-                });
-
-              } catch {
-
-                // Kullanıcı paylaşımı iptal etti.
-
-              }
-
-            } else {
-
-              try {
-
-                await navigator.clipboard.writeText(
-                  window.location.href
-                );
-
-                shareButton.textContent =
-                  "✓ Link kopyalandı";
-
-                setTimeout(
-                  () => {
-
-                    shareButton.textContent =
-                      "↗ Paylaş";
-
-                  },
-                  1800
-                );
-
-              } catch {
-
-                alert(
-                  "Paylaşım desteklenmiyor."
-                );
-
-              }
-
-            }
-
-          }
-        );
-
-      }
-
-    }
-
-    /* ================= SON DAKİKA ================= */
-
-    const breaking =
-      NEWS.filter(
-        news => news.breaking
-      );
-
-    const breakingElement =
-      document.getElementById(
-        "breakingNews"
-      );
-
-    if (breaking.length) {
-
-      let index = 0;
-
-      const renderBreaking = () => {
-
-        const news =
-          breaking[index];
-
-        breakingElement.innerHTML = `
-
-          <a href="${getArticleUrl(news)}">
-            ${escapeHTML(news.title)}
-          </a>
-
-        `;
-
-      };
-
-      renderBreaking();
-
-      setInterval(
-        () => {
-
-          index =
-            (index + 1) %
-            breaking.length;
-
-          renderBreaking();
-
-        },
-        5000
-      );
-
-    }
-
-    /* ================= TEMA ================= */
-
-    const themeToggle =
-      document.getElementById(
-        "themeToggle"
-      );
-
-    if (
-      localStorage.getItem(
-        "gunora-theme"
-      ) === "dark"
-    ) {
-
-      document.body.classList.add(
-        "dark"
-      );
-
-      themeToggle.textContent =
-        "☀️";
-
-    }
-
-    themeToggle.addEventListener(
-      "click",
-      () => {
-
-        const dark =
-          document.body.classList.toggle(
-            "dark"
-          );
-
-        localStorage.setItem(
-          "gunora-theme",
-          dark
-            ? "dark"
-            : "light"
-        );
-
-        themeToggle.textContent =
-          dark
-            ? "☀️"
-            : "🌙";
-
-      }
-    );
-
-    /* ================= OKUMA ÇUBUĞU ================= */
-
-    window.addEventListener(
-      "scroll",
-      () => {
-
-        const height =
-          document.documentElement
-            .scrollHeight -
-          window.innerHeight;
-
-        const progress =
-          height > 0
-            ? (
-                window.scrollY /
-                height
-              ) * 100
-            : 0;
-
-        document.getElementById(
-          "readingProgress"
-        ).style.width =
-          `${progress}%`;
-
-      },
-      { passive: true }
-    );
-
-  </script>
-
-</body>
-
-</html>
