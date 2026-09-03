@@ -1,21 +1,23 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>GÜNORA | Gündemin Yeni Sesi</title>
+  <title>GÜNORA | Son Dakika Haberleri</title>
 
-  <meta
-    name="description"
-    content="GÜNORA - Türkiye ve dünyadan son dakika haberleri, gündem, ekonomi, spor ve teknoloji."
-  >
+<meta
+name="description"
+content="GÜNORA - Türkiye ve dünyadan son dakika haberleri, gündem, ekonomi, spor ve teknoloji."
 
-  <meta
-    name="keywords"
-    content="haber, son dakika, gündem, ekonomi, spor, dünya, teknoloji, Türkiye"
-  >
+>
+
+<meta
+name="keywords"
+content="haber, son dakika, gündem, ekonomi, spor, dünya, teknoloji, Türkiye"
+
+>
 
   <meta name="theme-color" content="#e30613">
 
@@ -24,1429 +26,2839 @@
 
 <body>
 
-  <!-- OKUMA İLERLEME ÇUBUĞU -->
-  <div class="reading-progress">
-    <span id="readingProgress"></span>
-  </div>
+<!-- =====================================================
+     OKUMA İLERLEME
+===================================================== -->
 
-  <!-- ================= TOPBAR ================= -->
-  <div class="topbar">
-    <div class="container topbar-inner">
+<div class="reading-progress">
+  <span id="readingProgress"></span>
+</div>
 
-      <div class="topbar-left">
-        <span id="todayDate">3 Eylül 2026</span>
-      </div>
+<!-- =====================================================
+     ÜST BAR
+===================================================== -->
 
-      <div class="topbar-right">
-        <span class="live-dot"></span>
-        <span>GÜNORA GÜNCEL</span>
-        <span class="topbar-separator">•</span>
-        <span id="currentTime">00:00</span>
-      </div>
+<div class="topbar">
 
-    </div>
-  </div>
+  <div class="container topbar-inner">
 
-  <!-- ================= HEADER ================= -->
-  <header class="site-header">
+```
+<div class="topbar-left">
+  <span id="todayDate"></span>
+</div>
 
-    <div class="container header-inner">
+<div class="topbar-right">
 
-      <a href="index.html" class="logo" aria-label="GÜNORA Ana Sayfa">
-        <span class="logo-main">GÜNORA</span>
-        <span class="logo-sub">Gündemin Yeni Sesi</span>
-      </a>
+  <span class="live-dot"></span>
 
-      <nav class="main-nav" id="mainNav">
+  <span>GÜNORA GÜNCEL</span>
 
-        <a href="index.html" class="active">Ana Sayfa</a>
-        <a href="gundem.html">Gündem</a>
-        <a href="spor.html">Spor</a>
-        <a href="ekonomi.html">Ekonomi</a>
-        <a href="dunya.html">Dünya</a>
-        <a href="teknoloji.html">Teknoloji</a>
+  <span class="topbar-separator">•</span>
 
-      </nav>
+  <span id="currentTime">00:00</span>
 
-      <div class="header-actions">
-
-        <button
-          class="icon-btn"
-          id="searchToggle"
-          type="button"
-          aria-label="Arama"
-        >
-          🔍
-        </button>
-
-        <button
-          class="icon-btn"
-          id="themeToggle"
-          type="button"
-          aria-label="Tema değiştir"
-        >
-          🌙
-        </button>
-
-        <button
-          class="mobile-menu-btn"
-          id="mobileMenuBtn"
-          type="button"
-          aria-label="Menüyü aç"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-      </div>
-
-    </div>
-
-    <!-- ARAMA -->
-    <div class="search-panel" id="searchPanel">
-
-      <div class="container">
-
-        <div class="search-panel-inner">
-
-          <span class="search-icon">⌕</span>
-
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="Haber ara..."
-            autocomplete="off"
-          >
-
-          <button id="searchClose" type="button">×</button>
-
-        </div>
-
-        <div id="searchResults" class="search-results"></div>
-
-      </div>
-
-    </div>
-
-  </header>
-
-  <!-- ================= MOBİL MENÜ ================= -->
-  <div class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-menu-inner">
-
-      <a href="index.html">Ana Sayfa</a>
-      <a href="gundem.html">Gündem</a>
-      <a href="spor.html">Spor</a>
-      <a href="ekonomi.html">Ekonomi</a>
-      <a href="dunya.html">Dünya</a>
-      <a href="teknoloji.html">Teknoloji</a>
-
-      <div class="mobile-menu-divider"></div>
-
-      <a href="hakkimizda.html">Hakkımızda</a>
-      <a href="iletisim.html">İletişim</a>
-
-    </div>
+</div>
+```
 
   </div>
 
-  <!-- ================= SON DAKİKA ================= -->
-  <section class="breaking-bar">
+</div>
 
-    <div class="container breaking-inner">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-      <div class="breaking-label">
-        <span class="breaking-pulse"></span>
-        SON DAKİKA
-      </div>
+<header class="site-header">
 
-      <div class="breaking-content" id="breakingNews">
-        Haberler yükleniyor...
-      </div>
+  <div class="container header-inner">
 
-      <div class="breaking-arrows">
-        <button id="breakingPrev" type="button">‹</button>
-        <button id="breakingNext" type="button">›</button>
-      </div>
+```
+<a
+  href="index.html"
+  class="logo"
+  aria-label="GÜNORA Ana Sayfa"
+>
 
-    </div>
+  <span class="logo-main">
+    GÜNORA
+  </span>
 
-  </section>
+  <span class="logo-sub">
+    Gündemin Yeni Sesi
+  </span>
 
-  <!-- ================= ANA İÇERİK ================= -->
-  <main>
+</a>
 
-    <!-- MANŞET -->
-    <section class="hero-section">
 
-      <div class="container">
+<nav
+  class="main-nav"
+  id="mainNav"
+>
 
-        <div class="section-heading hero-heading">
-
-          <div>
-            <span class="section-kicker">GÜNORA</span>
-            <h1>Manşet</h1>
-          </div>
-
-          <div class="hero-counter">
-            <span id="heroCurrent">01</span>
-            <span>/</span>
-            <span id="heroTotal">01</span>
-          </div>
-
-        </div>
-
-        <div class="hero-layout">
-
-          <div class="hero-slider">
-
-            <div class="hero-track" id="heroTrack"></div>
-
-            <button
-              class="hero-arrow hero-prev"
-              id="heroPrev"
-              type="button"
-              aria-label="Önceki haber"
-            >
-              ‹
-            </button>
-
-            <button
-              class="hero-arrow hero-next"
-              id="heroNext"
-              type="button"
-              aria-label="Sonraki haber"
-            >
-              ›
-            </button>
-
-            <div class="hero-dots" id="heroDots"></div>
-
-            <div class="hero-progress">
-              <span id="heroProgress"></span>
-            </div>
-
-          </div>
-
-          <aside class="hero-side" id="heroSide"></aside>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ================= FİNANS ================= -->
-    <section class="market-section">
-
-      <div class="container">
-
-        <div class="market-header">
-
-          <div>
-            <span class="section-kicker">PİYASALAR</span>
-            <h2>Ekonomi Gündemi</h2>
-          </div>
-
-          <a href="ekonomi.html" class="section-link">
-            Ekonomi Haberleri →
-          </a>
-
-        </div>
-
-        <div class="market-grid">
-
-          <div class="market-card">
-            <span>Dolar</span>
-            <strong>—</strong>
-            <small>USD/TRY</small>
-          </div>
-
-          <div class="market-card">
-            <span>Euro</span>
-            <strong>—</strong>
-            <small>EUR/TRY</small>
-          </div>
-
-          <div class="market-card">
-            <span>Altın</span>
-            <strong>—</strong>
-            <small>Gram</small>
-          </div>
-
-          <div class="market-card">
-            <span>Bitcoin</span>
-            <strong>—</strong>
-            <small>BTC/USD</small>
-          </div>
-
-          <div class="market-card">
-            <span>Borsa</span>
-            <strong>—</strong>
-            <small>BIST 100</small>
-          </div>
-
-        </div>
-
-        <p class="market-note">
-          Piyasa verileri için canlı API bağlantısı ayrıca eklenebilir.
-        </p>
-
-      </div>
-
-    </section>
-
-    <!-- ================= SON HABERLER ================= -->
-    <section class="news-section">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div>
-            <span class="section-kicker">GÜNDEM</span>
-            <h2>Son Haberler</h2>
-          </div>
-
-          <span class="news-count" id="newsCount"></span>
-
-        </div>
-
-        <div class="news-layout">
-
-          <div class="news-grid" id="newsGrid"></div>
-
-          <aside class="sidebar">
-
-            <div class="sidebar-box">
-
-              <div class="sidebar-title">
-                <span class="red-line"></span>
-                Çok Okunanlar
-              </div>
-
-              <div id="popularNews" class="popular-list"></div>
-
-            </div>
-
-            <div class="sidebar-box newsletter-box">
-
-              <span class="section-kicker">GÜNORA</span>
-
-              <h3>Gündemi kaçırma</h3>
-
-              <p>
-                Günün önemli gelişmelerini takip et.
-              </p>
-
-              <a href="iletisim.html" class="newsletter-btn">
-                Bizi takip et →
-              </a>
-
-            </div>
-
-          </aside>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ================= KATEGORİLER ================= -->
-    <section class="category-section">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div>
-            <span class="section-kicker">KATEGORİLER</span>
-            <h2>Gündemden Başlıklar</h2>
-          </div>
-
-        </div>
-
-        <div class="category-block">
-
-          <div class="category-heading">
-            <h3>Gündem</h3>
-            <a href="gundem.html">Tümünü gör →</a>
-          </div>
-
-          <div class="category-grid" id="categoryGundem"></div>
-
-        </div>
-
-        <div class="category-block">
-
-          <div class="category-heading">
-            <h3>Spor</h3>
-            <a href="spor.html">Tümünü gör →</a>
-          </div>
-
-          <div class="category-grid" id="categorySpor"></div>
-
-        </div>
-
-        <div class="category-block">
-
-          <div class="category-heading">
-            <h3>Ekonomi</h3>
-            <a href="ekonomi.html">Tümünü gör →</a>
-          </div>
-
-          <div class="category-grid" id="categoryEkonomi"></div>
-
-        </div>
-
-        <div class="category-block">
-
-          <div class="category-heading">
-            <h3>Dünya</h3>
-            <a href="dunya.html">Tümünü gör →</a>
-          </div>
-
-          <div class="category-grid" id="categoryDunya"></div>
-
-        </div>
-
-        <div class="category-block">
-
-          <div class="category-heading">
-            <h3>Teknoloji</h3>
-            <a href="teknoloji.html">Tümünü gör →</a>
-          </div>
-
-          <div class="category-grid" id="categoryTeknoloji"></div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
-
-    <div class="container">
-
-      <div class="footer-main">
-
-        <div class="footer-brand">
-
-          <a href="index.html" class="footer-logo">
-            GÜNORA
-          </a>
-
-          <p>
-            Gündemin Yeni Sesi.
-            Türkiye ve dünyadan gelişmeleri hızlı,
-            sade ve anlaşılır şekilde takip edin.
-          </p>
-
-        </div>
-
-        <div class="footer-column">
-
-          <h4>Kategoriler</h4>
-
-          <a href="gundem.html">Gündem</a>
-          <a href="spor.html">Spor</a>
-          <a href="ekonomi.html">Ekonomi</a>
-          <a href="dunya.html">Dünya</a>
-          <a href="teknoloji.html">Teknoloji</a>
-
-        </div>
-
-        <div class="footer-column">
-
-          <h4>GÜNORA</h4>
-
-          <a href="hakkimizda.html">Hakkımızda</a>
-          <a href="iletisim.html">İletişim</a>
-          <a href="gizlilik.html">Gizlilik</a>
-          <a href="kullanim-sartlari.html">Kullanım Şartları</a>
-
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-
-        <span>
-          © <span id="footerYear">2026</span> GÜNORA
-        </span>
-
-        <span>
-          Gündemin Yeni Sesi
-        </span>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-  <!-- YUKARI ÇIK -->
-  <button
-    class="scroll-top"
-    id="scrollTop"
-    type="button"
-    aria-label="Yukarı çık"
+  <a
+    href="index.html"
+    class="active"
   >
-    ↑
+    Ana Sayfa
+  </a>
+
+  <a href="gundem.html">
+    Gündem
+  </a>
+
+  <a href="spor.html">
+    Spor
+  </a>
+
+  <a href="ekonomi.html">
+    Ekonomi
+  </a>
+
+  <a href="dunya.html">
+    Dünya
+  </a>
+
+  <a href="teknoloji.html">
+    Teknoloji
+  </a>
+
+</nav>
+
+
+<div class="header-actions">
+
+  <button
+    class="icon-btn"
+    id="searchToggle"
+    type="button"
+    aria-label="Arama"
+  >
+    🔍
   </button>
 
-  <!-- NEWS DATA -->
-  <script src="data/news.js"></script>
 
-  <!-- ================= JAVASCRIPT ================= -->
-  <script>
+  <button
+    class="icon-btn"
+    id="themeToggle"
+    type="button"
+    aria-label="Tema değiştir"
+  >
+    🌙
+  </button>
 
-    "use strict";
 
-let NEWS = [];
+  <button
+    class="mobile-menu-btn"
+    id="mobileMenuBtn"
+    type="button"
+    aria-label="Menüyü aç"
+  >
 
-async function loadNews() {
-  try {
-    const response = await fetch("/api/news");
+    <span></span>
+    <span></span>
+    <span></span>
 
-    if (!response.ok) {
-      throw new Error("API bağlantısı başarısız: " + response.status);
-    }
+  </button>
 
-    const data = await response.json();
+</div>
+```
 
-    if (!data.success || !Array.isArray(data.news)) {
-      throw new Error("API geçerli haber verisi döndürmedi.");
-    }
+  </div>
 
-    NEWS = data.news;
+  <!-- ARAMA -->
 
-    console.log("GÜNORA canlı haber:", NEWS.length);
+  <div
+    class="search-panel"
+    id="searchPanel"
+  >
 
-    renderHero();
-    renderBreaking();
-    renderNewsGrid();
-    renderPopular();
-    renderCategories();
+```
+<div class="container">
 
-  } catch (error) {
-    console.error("GÜNORA haber API hatası:", error);
+  <div class="search-panel-inner">
+
+    <span class="search-icon">
+      ⌕
+    </span>
+
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Haber ara..."
+      autocomplete="off"
+    >
+
+    <button
+      id="searchClose"
+      type="button"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <div
+    id="searchResults"
+    class="search-results"
+  ></div>
+
+</div>
+```
+
+  </div>
+
+</header>
+
+<!-- =====================================================
+     MOBİL MENÜ
+===================================================== -->
+
+<div
+  class="mobile-menu"
+  id="mobileMenu"
+>
+
+  <div class="mobile-menu-inner">
+
+```
+<a href="index.html">
+  Ana Sayfa
+</a>
+
+<a href="gundem.html">
+  Gündem
+</a>
+
+<a href="spor.html">
+  Spor
+</a>
+
+<a href="ekonomi.html">
+  Ekonomi
+</a>
+
+<a href="dunya.html">
+  Dünya
+</a>
+
+<a href="teknoloji.html">
+  Teknoloji
+</a>
+
+<div class="mobile-menu-divider"></div>
+
+<a href="hakkimizda.html">
+  Hakkımızda
+</a>
+
+<a href="iletisim.html">
+  İletişim
+</a>
+```
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     SON DAKİKA
+===================================================== -->
+
+<section class="breaking-bar">
+
+  <div class="container breaking-inner">
+
+```
+<div class="breaking-label">
+
+  <span class="breaking-pulse"></span>
+
+  SON DAKİKA
+
+</div>
+
+
+<div
+  class="breaking-content"
+  id="breakingNews"
+>
+  Haberler yükleniyor...
+</div>
+
+
+<div class="breaking-arrows">
+
+  <button
+    id="breakingPrev"
+    type="button"
+  >
+    ‹
+  </button>
+
+  <button
+    id="breakingNext"
+    type="button"
+  >
+    ›
+  </button>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     ANA İÇERİK
+===================================================== -->
+
+<main>
+
+<!-- =====================================================
+     MANŞET
+===================================================== -->
+
+<section class="hero-section">
+
+  <div class="container">
+
+```
+<div class="section-heading hero-heading">
+
+  <div>
+
+    <span class="section-kicker">
+      GÜNORA
+    </span>
+
+    <h1>
+      Manşet
+    </h1>
+
+  </div>
+
+
+  <div class="hero-counter">
+
+    <span id="heroCurrent">
+      01
+    </span>
+
+    <span>/</span>
+
+    <span id="heroTotal">
+      01
+    </span>
+
+  </div>
+
+</div>
+
+
+<div class="hero-layout">
+
+  <div class="hero-slider">
+
+    <div
+      class="hero-track"
+      id="heroTrack"
+    ></div>
+
+
+    <button
+      class="hero-arrow hero-prev"
+      id="heroPrev"
+      type="button"
+      aria-label="Önceki haber"
+    >
+      ‹
+    </button>
+
+
+    <button
+      class="hero-arrow hero-next"
+      id="heroNext"
+      type="button"
+      aria-label="Sonraki haber"
+    >
+      ›
+    </button>
+
+
+    <div
+      class="hero-dots"
+      id="heroDots"
+    ></div>
+
+
+    <div class="hero-progress">
+
+      <span
+        id="heroProgress"
+      ></span>
+
+    </div>
+
+  </div>
+
+
+  <aside
+    class="hero-side"
+    id="heroSide"
+  ></aside>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     EKONOMİ
+===================================================== -->
+
+<section class="market-section">
+
+  <div class="container">
+
+```
+<div class="market-header">
+
+  <div>
+
+    <span class="section-kicker">
+      PİYASALAR
+    </span>
+
+    <h2>
+      Ekonomi Gündemi
+    </h2>
+
+  </div>
+
+
+  <a
+    href="ekonomi.html"
+    class="section-link"
+  >
+    Ekonomi Haberleri →
+  </a>
+
+</div>
+
+
+<div class="market-grid">
+
+  <div class="market-card">
+    <span>Dolar</span>
+    <strong>—</strong>
+    <small>USD/TRY</small>
+  </div>
+
+
+  <div class="market-card">
+    <span>Euro</span>
+    <strong>—</strong>
+    <small>EUR/TRY</small>
+  </div>
+
+
+  <div class="market-card">
+    <span>Altın</span>
+    <strong>—</strong>
+    <small>Gram</small>
+  </div>
+
+
+  <div class="market-card">
+    <span>Bitcoin</span>
+    <strong>—</strong>
+    <small>BTC/USD</small>
+  </div>
+
+
+  <div class="market-card">
+    <span>Borsa</span>
+    <strong>—</strong>
+    <small>BIST 100</small>
+  </div>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     SON HABERLER
+===================================================== -->
+
+<section class="news-section">
+
+  <div class="container">
+
+```
+<div class="section-heading">
+
+  <div>
+
+    <span class="section-kicker">
+      GÜNDEM
+    </span>
+
+    <h2>
+      Son Haberler
+    </h2>
+
+  </div>
+
+
+  <span
+    class="news-count"
+    id="newsCount"
+  >
+  </span>
+
+</div>
+
+
+<div class="news-layout">
+
+  <div
+    class="news-grid"
+    id="newsGrid"
+  >
+
+    <div class="news-loading">
+      Haberler yükleniyor...
+    </div>
+
+  </div>
+
+
+  <aside class="sidebar">
+
+    <div class="sidebar-box">
+
+      <div class="sidebar-title">
+
+        <span class="red-line"></span>
+
+        Çok Okunanlar
+
+      </div>
+
+
+      <div
+        id="popularNews"
+        class="popular-list"
+      ></div>
+
+    </div>
+
+
+    <div class="sidebar-box newsletter-box">
+
+      <span class="section-kicker">
+        GÜNORA
+      </span>
+
+      <h3>
+        Gündemi kaçırma
+      </h3>
+
+      <p>
+        Günün önemli gelişmelerini takip et.
+      </p>
+
+      <a
+        href="iletisim.html"
+        class="newsletter-btn"
+      >
+        Bizi takip et →
+      </a>
+
+    </div>
+
+  </aside>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     KATEGORİLER
+===================================================== -->
+
+<section class="category-section">
+
+  <div class="container">
+
+```
+<div class="section-heading">
+
+  <div>
+
+    <span class="section-kicker">
+      KATEGORİLER
+    </span>
+
+    <h2>
+      Gündemden Başlıklar
+    </h2>
+
+  </div>
+
+</div>
+
+
+<!-- GÜNDEM -->
+
+<div class="category-block">
+
+  <div class="category-heading">
+
+    <h3>
+      Gündem
+    </h3>
+
+    <a href="gundem.html">
+      Tümünü gör →
+    </a>
+
+  </div>
+
+
+  <div
+    class="category-grid"
+    id="categoryGundem"
+  ></div>
+
+</div>
+
+
+<!-- SPOR -->
+
+<div class="category-block">
+
+  <div class="category-heading">
+
+    <h3>
+      Spor
+    </h3>
+
+    <a href="spor.html">
+      Tümünü gör →
+    </a>
+
+  </div>
+
+
+  <div
+    class="category-grid"
+    id="categorySpor"
+  ></div>
+
+</div>
+
+
+<!-- EKONOMİ -->
+
+<div class="category-block">
+
+  <div class="category-heading">
+
+    <h3>
+      Ekonomi
+    </h3>
+
+    <a href="ekonomi.html">
+      Tümünü gör →
+    </a>
+
+  </div>
+
+
+  <div
+    class="category-grid"
+    id="categoryEkonomi"
+  ></div>
+
+</div>
+
+
+<!-- DÜNYA -->
+
+<div class="category-block">
+
+  <div class="category-heading">
+
+    <h3>
+      Dünya
+    </h3>
+
+    <a href="dunya.html">
+      Tümünü gör →
+    </a>
+
+  </div>
+
+
+  <div
+    class="category-grid"
+    id="categoryDunya"
+  ></div>
+
+</div>
+
+
+<!-- TEKNOLOJİ -->
+
+<div class="category-block">
+
+  <div class="category-heading">
+
+    <h3>
+      Teknoloji
+    </h3>
+
+    <a href="teknoloji.html">
+      Tümünü gör →
+    </a>
+
+  </div>
+
+
+  <div
+    class="category-grid"
+    id="categoryTeknoloji"
+  ></div>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+  <div class="container">
+
+```
+<div class="footer-main">
+
+  <div class="footer-brand">
+
+    <a
+      href="index.html"
+      class="footer-logo"
+    >
+      GÜNORA
+    </a>
+
+    <p>
+      Gündemin Yeni Sesi.
+      Türkiye ve dünyadan gelişmeleri
+      hızlı, sade ve anlaşılır şekilde takip edin.
+    </p>
+
+  </div>
+
+
+  <div class="footer-column">
+
+    <h4>
+      Kategoriler
+    </h4>
+
+    <a href="gundem.html">
+      Gündem
+    </a>
+
+    <a href="spor.html">
+      Spor
+    </a>
+
+    <a href="ekonomi.html">
+      Ekonomi
+    </a>
+
+    <a href="dunya.html">
+      Dünya
+    </a>
+
+    <a href="teknoloji.html">
+      Teknoloji
+    </a>
+
+  </div>
+
+
+  <div class="footer-column">
+
+    <h4>
+      GÜNORA
+    </h4>
+
+    <a href="hakkimizda.html">
+      Hakkımızda
+    </a>
+
+    <a href="iletisim.html">
+      İletişim
+    </a>
+
+    <a href="gizlilik.html">
+      Gizlilik
+    </a>
+
+    <a href="kullanim-sartlari.html">
+      Kullanım Şartları
+    </a>
+
+  </div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+  <span>
+    ©
+    <span id="footerYear">
+      2026
+    </span>
+    GÜNORA
+  </span>
+
+  <span>
+    Gündemin Yeni Sesi
+  </span>
+
+</div>
+```
+
+  </div>
+
+</footer>
+
+<!-- =====================================================
+     YUKARI ÇIK
+===================================================== -->
+
+<button
+class="scroll-top"
+id="scrollTop"
+type="button"
+aria-label="Yukarı çık"
+
+>
+
+↑ </button>
+
+<!-- =====================================================
+     YEDEK HABER VERİSİ
+===================================================== -->
+
+<script src="data/news.js"></script>
+
+<!-- =====================================================
+     GÜNORA JAVASCRIPT
+===================================================== -->
+
+<script>
+
+"use strict";
+
+
+/* =====================================================
+   TEMEL YARDIMCILAR
+===================================================== */
+
+const $ = (selector) =>
+  document.querySelector(selector);
+
+
+const escapeHTML = (value) => {
+
+  return String(value ?? "")
+
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+};
+
+
+const formatDate = (dateString) => {
+
+  if (!dateString) return "";
+
+  const date = new Date(dateString);
+
+  if (Number.isNaN(date.getTime())) {
+    return "";
   }
-}
 
-loadNews();
-    const $ = (selector) => document.querySelector(selector);
+  return new Intl.DateTimeFormat(
+    "tr-TR",
+    {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    }
+  ).format(date);
 
-    const escapeHTML = (value) => {
-      return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    };
+};
 
-    const formatDate = (dateString) => {
 
-      if (!dateString) return "";
+const formatShortDate = (dateString) => {
 
-      const date = new Date(dateString);
+  if (!dateString) return "";
 
-      if (Number.isNaN(date.getTime())) return "";
+  const date = new Date(dateString);
 
-      return new Intl.DateTimeFormat("tr-TR", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric"
-      }).format(date);
+  if (Number.isNaN(date.getTime())) {
+    return "";
+  }
 
-    };
+  return new Intl.DateTimeFormat(
+    "tr-TR",
+    {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    }
+  ).format(date);
 
-    const formatShortDate = (dateString) => {
+};
 
-      if (!dateString) return "";
 
-      const date = new Date(dateString);
+const getArticleUrl = (article) => {
 
-      if (Number.isNaN(date.getTime())) return "";
+  if (
+    article.externalUrl &&
+    !article.slug
+  ) {
+    return article.externalUrl;
+  }
 
-      return new Intl.DateTimeFormat("tr-TR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric"
-      }).format(date);
+  return (
+    "haber.html?slug=" +
+    encodeURIComponent(
+      article.slug || ""
+    )
+  );
 
-    };
+};
 
-    const getArticleUrl = (article) => {
 
-      return "haber.html?slug=" +
-        encodeURIComponent(article.slug || "");
+const getImage = (article) => {
 
-    };
+  if (
+    article &&
+    article.image
+  ) {
 
-    const getImage = (article) => {
+    return article.image;
 
-      if (article && article.image) {
-        return article.image;
-      }
+  }
 
-      return "";
-    };
+  return "";
 
-    const imageHTML = (article, className = "") => {
+};
 
-      const image = getImage(article);
 
-      if (image) {
+const imageHTML = (
+  article,
+  className = ""
+) => {
 
-        return `
-          <img
-            class="${className}"
-            src="${escapeHTML(image)}"
-            alt="${escapeHTML(article.title)}"
-            loading="lazy"
-          >
-        `;
+  const image =
+    getImage(article);
 
-      }
 
-      return `
-        <div class="${className} image-placeholder">
-          <span>GÜNORA</span>
-        </div>
-      `;
+  if (image) {
 
-    };
+    return `
 
-    /* ================= SAAT ================= */
+      <img
+        class="${className}"
+        src="${escapeHTML(image)}"
+        alt="${escapeHTML(article.title)}"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      >
 
-    const updateClock = () => {
+    `;
 
-      const now = new Date();
+  }
 
-      const time = now.toLocaleTimeString("tr-TR", {
+
+  return `
+
+    <div
+      class="${className} image-placeholder"
+    >
+      <span>GÜNORA</span>
+    </div>
+
+  `;
+
+};
+
+
+/* =====================================================
+   SAAT
+===================================================== */
+
+const updateClock = () => {
+
+  const now =
+    new Date();
+
+
+  const time =
+    now.toLocaleTimeString(
+      "tr-TR",
+      {
         hour: "2-digit",
         minute: "2-digit"
-      });
+      }
+    );
 
-      const date = now.toLocaleDateString("tr-TR", {
+
+  const date =
+    now.toLocaleDateString(
+      "tr-TR",
+      {
         day: "numeric",
         month: "long",
         year: "numeric"
-      });
+      }
+    );
 
-      const clock = $("#currentTime");
-      const dateEl = $("#todayDate");
 
-      if (clock) clock.textContent = time;
-      if (dateEl) dateEl.textContent = date;
+  const clock =
+    $("#currentTime");
 
-    };
 
-    updateClock();
+  const dateEl =
+    $("#todayDate");
 
-    setInterval(updateClock, 1000);
 
-    $("#footerYear").textContent =
-      new Date().getFullYear();
+  if (clock) {
+    clock.textContent = time;
+  }
 
-    /* ================= MANŞET ================= */
 
-    const featuredNews = NEWS
-      .filter(news => news.featured)
-      .slice(0, 10);
+  if (dateEl) {
+    dateEl.textContent = date;
+  }
 
-    const heroNews = featuredNews.length
-      ? featuredNews
-      : NEWS.slice(0, 10);
+};
 
-    let heroIndex = 0;
-    let heroTimer = null;
 
-    const renderHero = () => {
+updateClock();
 
-      const track = $("#heroTrack");
-      const dots = $("#heroDots");
-      const side = $("#heroSide");
+setInterval(
+  updateClock,
+  1000
+);
 
-      if (!track) return;
 
-      track.innerHTML = heroNews.map((news, index) => {
+const footerYear =
+  $("#footerYear");
 
-        return `
-          <article class="hero-slide">
 
-            <a
-              href="${getArticleUrl(news)}"
-              class="hero-slide-link"
-            >
+if (footerYear) {
 
-              <div class="hero-image">
+  footerYear.textContent =
+    new Date().getFullYear();
 
-                ${imageHTML(news, "hero-slide-image")}
+}
 
-                <div class="hero-image-overlay"></div>
 
-              </div>
+/* =====================================================
+   HABER DEĞİŞKENLERİ
+===================================================== */
 
-              <div class="hero-slide-content">
+let NEWS = [];
 
-                <div class="hero-category">
-                  ${escapeHTML(news.category)}
-                </div>
 
-                <h2>
-                  ${escapeHTML(news.title)}
-                </h2>
+let heroNews = [];
 
-                <p>
-                  ${escapeHTML(news.summary)}
-                </p>
 
-                <div class="hero-meta">
+let breakingNews = [];
 
-                  <span>
-                    ${escapeHTML(news.source || "GÜNORA")}
-                  </span>
 
-                  <span>•</span>
+let heroIndex = 0;
 
-                  <span>
-                    ${formatDate(news.created_at)}
-                  </span>
 
-                </div>
+let breakingIndex = 0;
 
-              </div>
 
-            </a>
+let heroTimer = null;
 
-          </article>
-        `;
 
-      }).join("");
+let breakingTimer = null;
 
-      dots.innerHTML = heroNews.map((_, index) => {
 
-        return `
-          <button
-            class="hero-dot ${index === 0 ? "active" : ""}"
-            data-index="${index}"
-            type="button"
-            aria-label="${index + 1}. manşet"
-          ></button>
-        `;
+/* =====================================================
+   MANŞET
+===================================================== */
 
-      }).join("");
+const renderHero = () => {
 
-      side.innerHTML = heroNews
-        .slice(0, 5)
-        .map((news, index) => {
+  const track =
+    $("#heroTrack");
+
+
+  const dots =
+    $("#heroDots");
+
+
+  const side =
+    $("#heroSide");
+
+
+  if (!track) return;
+
+
+  if (!heroNews.length) {
+
+    track.innerHTML = `
+
+      <div class="news-loading">
+        Manşet haber bulunamadı.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  track.innerHTML =
+    heroNews
+      .map(
+        (news) => {
 
           return `
-            <a
-              href="${getArticleUrl(news)}"
-              class="hero-side-item ${index === 0 ? "active" : ""}"
-              data-index="${index}"
+
+            <article
+              class="hero-slide"
             >
 
-              <span class="hero-side-number">
-                ${String(index + 1).padStart(2, "0")}
-              </span>
+              <a
+                href="${getArticleUrl(news)}"
+                class="hero-slide-link"
+              >
 
-              <span class="hero-side-text">
+                <div class="hero-image">
 
-                <small>
-                  ${escapeHTML(news.category)}
-                </small>
+                  ${imageHTML(
+                    news,
+                    "hero-slide-image"
+                  )}
 
-                <strong>
-                  ${escapeHTML(news.title)}
-                </strong>
+                  <div
+                    class="hero-image-overlay"
+                  ></div>
 
-              </span>
+                </div>
 
-            </a>
-          `;
 
-        }).join("");
-
-      updateHero();
-
-    };
-
-    const updateHero = () => {
-
-      const track = $("#heroTrack");
-
-      if (!track || !heroNews.length) return;
-
-      track.style.transform =
-        `translateX(-${heroIndex * 100}%)`;
-
-      $("#heroCurrent").textContent =
-        String(heroIndex + 1).padStart(2, "0");
-
-      $("#heroTotal").textContent =
-        String(heroNews.length).padStart(2, "0");
-
-      document
-        .querySelectorAll(".hero-dot")
-        .forEach((dot, index) => {
-
-          dot.classList.toggle(
-            "active",
-            index === heroIndex
-          );
-
-        });
-
-      document
-        .querySelectorAll(".hero-side-item")
-        .forEach((item, index) => {
-
-          item.classList.toggle(
-            "active",
-            index === heroIndex
-          );
-
-        });
-
-      const progress = $("#heroProgress");
-
-      if (progress) {
-
-        progress.style.animation = "none";
-
-        void progress.offsetWidth;
-
-        progress.style.animation =
-          "heroProgress 6s linear";
-
-      }
-
-    };
-
-    const nextHero = () => {
-
-      if (!heroNews.length) return;
-
-      heroIndex =
-        (heroIndex + 1) % heroNews.length;
-
-      updateHero();
-
-    };
-
-    const prevHero = () => {
-
-      if (!heroNews.length) return;
-
-      heroIndex =
-        (heroIndex - 1 + heroNews.length) %
-        heroNews.length;
-
-      updateHero();
-
-    };
-
-    const startHeroTimer = () => {
-
-      clearInterval(heroTimer);
-
-      heroTimer = setInterval(
-        nextHero,
-        6000
-      );
-
-    };
-
-    $("#heroNext").addEventListener(
-      "click",
-      () => {
-        nextHero();
-        startHeroTimer();
-      }
-    );
-
-    $("#heroPrev").addEventListener(
-      "click",
-      () => {
-        prevHero();
-        startHeroTimer();
-      }
-    );
-
-    document.addEventListener(
-      "click",
-      (event) => {
-
-        const dot =
-          event.target.closest(".hero-dot");
-
-        if (dot) {
-
-          heroIndex =
-            Number(dot.dataset.index);
-
-          updateHero();
-          startHeroTimer();
-
-        }
-
-        const sideItem =
-          event.target.closest(".hero-side-item");
-
-        if (sideItem) {
-
-          heroIndex =
-            Number(sideItem.dataset.index);
-
-          updateHero();
-          startHeroTimer();
-
-        }
-
-      }
-    );
-
-    renderHero();
-    startHeroTimer();
-
-    /* ================= SON DAKİKA ================= */
-
-    const breakingNews = NEWS.filter(
-      news => news.breaking
-    );
-
-    let breakingIndex = 0;
-
-    const renderBreaking = () => {
-
-      const container =
-        $("#breakingNews");
-
-      if (!container) return;
-
-      if (!breakingNews.length) {
-
-        container.textContent =
-          "GÜNORA'dan güncel gelişmeler";
-
-        return;
-
-      }
-
-      const news =
-        breakingNews[breakingIndex];
-
-      container.innerHTML = `
-        <a href="${getArticleUrl(news)}">
-          ${escapeHTML(news.title)}
-        </a>
-      `;
-
-    };
-
-    const nextBreaking = () => {
-
-      if (!breakingNews.length) return;
-
-      breakingIndex =
-        (breakingIndex + 1) %
-        breakingNews.length;
-
-      renderBreaking();
-
-    };
-
-    const prevBreaking = () => {
-
-      if (!breakingNews.length) return;
-
-      breakingIndex =
-        (breakingIndex - 1 +
-          breakingNews.length) %
-        breakingNews.length;
-
-      renderBreaking();
-
-    };
-
-    $("#breakingNext").addEventListener(
-      "click",
-      nextBreaking
-    );
-
-    $("#breakingPrev").addEventListener(
-      "click",
-      prevBreaking
-    );
-
-    renderBreaking();
-
-    setInterval(nextBreaking, 5000);
-
-    /* ================= HABER KARTLARI ================= */
-
-    const renderNewsGrid = () => {
-
-      const grid = $("#newsGrid");
-
-      if (!grid) return;
-
-      const sortedNews = [...NEWS]
-        .sort(
-          (a, b) =>
-            new Date(b.created_at) -
-            new Date(a.created_at)
-        );
-
-      grid.innerHTML =
-        sortedNews
-          .map(news => {
-
-            return `
-              <article class="news-card">
-
-                <a
-                  href="${getArticleUrl(news)}"
-                  class="news-card-image"
+                <div
+                  class="hero-slide-content"
                 >
 
-                  ${imageHTML(news)}
+                  <div
+                    class="hero-category"
+                  >
+                    ${escapeHTML(
+                      news.category
+                    )}
+                  </div>
 
-                  <span class="card-category">
-                    ${escapeHTML(news.category)}
-                  </span>
 
-                </a>
+                  <h2>
+                    ${escapeHTML(
+                      news.title
+                    )}
+                  </h2>
 
-                <div class="news-card-body">
 
-                  <div class="news-card-meta">
+                  <p>
+                    ${escapeHTML(
+                      news.summary
+                    )}
+                  </p>
+
+
+                  <div
+                    class="hero-meta"
+                  >
 
                     <span>
-                      ${formatShortDate(news.created_at)}
+                      ${escapeHTML(
+                        news.source ||
+                        "GÜNORA"
+                      )}
                     </span>
 
                     <span>•</span>
 
                     <span>
-                      ${escapeHTML(news.source || "GÜNORA")}
+                      ${formatDate(
+                        news.created_at
+                      )}
                     </span>
 
                   </div>
 
-                  <h3>
+                </div>
 
-                    <a href="${getArticleUrl(news)}">
-                      ${escapeHTML(news.title)}
-                    </a>
+              </a>
 
-                  </h3>
+            </article>
 
-                  <p>
-                    ${escapeHTML(news.summary)}
-                  </p>
+          `;
 
-                  <a
-                    href="${getArticleUrl(news)}"
-                    class="read-more"
-                  >
-                    Haberi oku →
-                  </a>
+        }
+      )
+      .join("");
+
+
+  if (dots) {
+
+    dots.innerHTML =
+      heroNews
+        .map(
+          (_, index) => {
+
+            return `
+
+              <button
+                class="hero-dot ${
+                  index === 0
+                    ? "active"
+                    : ""
+                }"
+                data-index="${index}"
+                type="button"
+                aria-label="${
+                  index + 1
+                }. manşet"
+              ></button>
+
+            `;
+
+          }
+        )
+        .join("");
+
+  }
+
+
+  if (side) {
+
+    side.innerHTML =
+      heroNews
+        .slice(0, 5)
+        .map(
+          (news, index) => {
+
+            return `
+
+              <a
+                href="${getArticleUrl(news)}"
+                class="
+                  hero-side-item
+                  ${
+                    index === 0
+                      ? "active"
+                      : ""
+                  }
+                "
+                data-index="${index}"
+              >
+
+                <span
+                  class="hero-side-number"
+                >
+                  ${String(
+                    index + 1
+                  ).padStart(
+                    2,
+                    "0"
+                  )}
+                </span>
+
+
+                <span
+                  class="hero-side-text"
+                >
+
+                  <small>
+                    ${escapeHTML(
+                      news.category
+                    )}
+                  </small>
+
+                  <strong>
+                    ${escapeHTML(
+                      news.title
+                    )}
+                  </strong>
+
+                </span>
+
+              </a>
+
+            `;
+
+          }
+        )
+        .join("");
+
+  }
+
+
+  updateHero();
+
+};
+
+
+const updateHero = () => {
+
+  const track =
+    $("#heroTrack");
+
+
+  if (
+    !track ||
+    !heroNews.length
+  ) {
+    return;
+  }
+
+
+  track.style.transform =
+    `translateX(-${
+      heroIndex * 100
+    }%)`;
+
+
+  const current =
+    $("#heroCurrent");
+
+
+  const total =
+    $("#heroTotal");
+
+
+  if (current) {
+
+    current.textContent =
+      String(
+        heroIndex + 1
+      ).padStart(
+        2,
+        "0"
+      );
+
+  }
+
+
+  if (total) {
+
+    total.textContent =
+      String(
+        heroNews.length
+      ).padStart(
+        2,
+        "0"
+      );
+
+  }
+
+
+  document
+    .querySelectorAll(
+      ".hero-dot"
+    )
+    .forEach(
+      (
+        dot,
+        index
+      ) => {
+
+        dot.classList.toggle(
+          "active",
+          index === heroIndex
+        );
+
+      }
+    );
+
+
+  document
+    .querySelectorAll(
+      ".hero-side-item"
+    )
+    .forEach(
+      (
+        item,
+        index
+      ) => {
+
+        item.classList.toggle(
+          "active",
+          index === heroIndex
+        );
+
+      }
+    );
+
+
+  const progress =
+    $("#heroProgress");
+
+
+  if (progress) {
+
+    progress.style.animation =
+      "none";
+
+    void progress.offsetWidth;
+
+    progress.style.animation =
+      "heroProgress 6s linear";
+
+  }
+
+};
+
+
+const nextHero = () => {
+
+  if (!heroNews.length) {
+    return;
+  }
+
+
+  heroIndex =
+    (
+      heroIndex + 1
+    ) %
+    heroNews.length;
+
+
+  updateHero();
+
+};
+
+
+const prevHero = () => {
+
+  if (!heroNews.length) {
+    return;
+  }
+
+
+  heroIndex =
+    (
+      heroIndex -
+      1 +
+      heroNews.length
+    ) %
+    heroNews.length;
+
+
+  updateHero();
+
+};
+
+
+const startHeroTimer = () => {
+
+  clearInterval(
+    heroTimer
+  );
+
+
+  if (
+    heroNews.length > 1
+  ) {
+
+    heroTimer =
+      setInterval(
+        nextHero,
+        6000
+      );
+
+  }
+
+};
+
+
+/* =====================================================
+   SON DAKİKA
+===================================================== */
+
+const renderBreaking = () => {
+
+  const container =
+    $("#breakingNews");
+
+
+  if (!container) {
+    return;
+  }
+
+
+  if (!breakingNews.length) {
+
+    container.textContent =
+      "GÜNORA'dan güncel gelişmeler";
+
+    return;
+
+  }
+
+
+  const news =
+    breakingNews[
+      breakingIndex
+    ];
+
+
+  container.innerHTML = `
+
+    <a
+      href="${getArticleUrl(news)}"
+    >
+      ${escapeHTML(
+        news.title
+      )}
+    </a>
+
+  `;
+
+};
+
+
+const nextBreaking = () => {
+
+  if (!breakingNews.length) {
+    return;
+  }
+
+
+  breakingIndex =
+    (
+      breakingIndex + 1
+    ) %
+    breakingNews.length;
+
+
+  renderBreaking();
+
+};
+
+
+const prevBreaking = () => {
+
+  if (!breakingNews.length) {
+    return;
+  }
+
+
+  breakingIndex =
+    (
+      breakingIndex -
+      1 +
+      breakingNews.length
+    ) %
+    breakingNews.length;
+
+
+  renderBreaking();
+
+};
+
+
+/* =====================================================
+   HABER KARTLARI
+===================================================== */
+
+const renderNewsGrid = () => {
+
+  const grid =
+    $("#newsGrid");
+
+
+  if (!grid) {
+    return;
+  }
+
+
+  const sortedNews =
+    [...NEWS]
+      .sort(
+        (a, b) =>
+          new Date(
+            b.created_at
+          ) -
+          new Date(
+            a.created_at
+          )
+      )
+      .slice(0, 24);
+
+
+  if (!sortedNews.length) {
+
+    grid.innerHTML = `
+
+      <div class="news-loading">
+        Haber bulunamadı.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  grid.innerHTML =
+    sortedNews
+      .map(
+        (news) => {
+
+          return `
+
+            <article
+              class="news-card"
+            >
+
+              <a
+                href="${getArticleUrl(news)}"
+                class="news-card-image"
+              >
+
+                ${imageHTML(
+                  news
+                )}
+
+                <span
+                  class="card-category"
+                >
+                  ${escapeHTML(
+                    news.category
+                  )}
+                </span>
+
+              </a>
+
+
+              <div
+                class="news-card-body"
+              >
+
+                <div
+                  class="news-card-meta"
+                >
+
+                  <span>
+                    ${formatShortDate(
+                      news.created_at
+                    )}
+                  </span>
+
+                  <span>•</span>
+
+                  <span>
+                    ${escapeHTML(
+                      news.source ||
+                      "GÜNORA"
+                    )}
+                  </span>
 
                 </div>
 
-              </article>
-            `;
 
-          })
-          .join("");
+                <h3>
 
-      $("#newsCount").textContent =
-        `${sortedNews.length} haber`;
+                  <a
+                    href="${getArticleUrl(news)}"
+                  >
+                    ${escapeHTML(
+                      news.title
+                    )}
+                  </a>
 
-    };
+                </h3>
 
-    renderNewsGrid();
 
-    /* ================= ÇOK OKUNANLAR ================= */
+                <p>
+                  ${escapeHTML(
+                    news.summary
+                  )}
+                </p>
 
-    const renderPopular = () => {
 
-      const container =
-        $("#popularNews");
+                <a
+                  href="${getArticleUrl(news)}"
+                  class="read-more"
+                >
+                  Haberi oku →
+                </a>
 
-      if (!container) return;
+              </div>
 
-      const popular =
-        [...NEWS]
-          .sort(
-            (a, b) =>
-              Number(b.views || 0) -
-              Number(a.views || 0)
+            </article>
+
+          `;
+
+        }
+      )
+      .join("");
+
+
+  const count =
+    $("#newsCount");
+
+
+  if (count) {
+
+    count.textContent =
+      `${sortedNews.length} haber`;
+
+  }
+
+};
+
+
+/* =====================================================
+   ÇOK OKUNANLAR
+===================================================== */
+
+const renderPopular = () => {
+
+  const container =
+    $("#popularNews");
+
+
+  if (!container) {
+    return;
+  }
+
+
+  const popular =
+    [...NEWS]
+      .sort(
+        (a, b) =>
+          Number(
+            b.views || 0
+          ) -
+          Number(
+            a.views || 0
           )
-          .slice(0, 7);
+      )
+      .slice(0, 7);
 
-      container.innerHTML =
-        popular.map((news, index) => {
+
+  container.innerHTML =
+    popular
+      .map(
+        (news, index) => {
 
           return `
+
             <a
               href="${getArticleUrl(news)}"
               class="popular-item"
             >
 
-              <span class="popular-number">
-                ${String(index + 1).padStart(2, "0")}
+              <span
+                class="popular-number"
+              >
+                ${String(
+                  index + 1
+                ).padStart(
+                  2,
+                  "0"
+                )}
               </span>
 
-              <span class="popular-content">
+
+              <span
+                class="popular-content"
+              >
 
                 <small>
-                  ${escapeHTML(news.category)}
+                  ${escapeHTML(
+                    news.category
+                  )}
                 </small>
 
+
                 <strong>
-                  ${escapeHTML(news.title)}
+                  ${escapeHTML(
+                    news.title
+                  )}
                 </strong>
 
               </span>
 
             </a>
+
           `;
 
-        }).join("");
+        }
+      )
+      .join("");
 
-    };
+};
 
-    renderPopular();
 
-    /* ================= KATEGORİLER ================= */
+/* =====================================================
+   KATEGORİLER
+===================================================== */
 
-    const categoryMap = {
-      Gündem: "categoryGundem",
-      Spor: "categorySpor",
-      Ekonomi: "categoryEkonomi",
-      Dünya: "categoryDunya",
-      Teknoloji: "categoryTeknoloji"
-    };
+const categoryMap = {
 
-    const renderCategories = () => {
+  Gündem:
+    "categoryGundem",
 
-      Object.entries(categoryMap)
-        .forEach(([category, elementId]) => {
+  Spor:
+    "categorySpor",
 
-          const container =
-            document.getElementById(elementId);
+  Ekonomi:
+    "categoryEkonomi",
 
-          if (!container) return;
+  Dünya:
+    "categoryDunya",
 
-          const categoryNews =
-            NEWS
-              .filter(
-                news =>
-                  news.category === category
-              )
-              .slice(0, 4);
+  Teknoloji:
+    "categoryTeknoloji"
 
-          container.innerHTML =
-            categoryNews
-              .map(news => {
+};
+
+
+const renderCategories = () => {
+
+  Object
+    .entries(categoryMap)
+    .forEach(
+      (
+        [
+          category,
+          elementId
+        ]
+      ) => {
+
+        const container =
+          document.getElementById(
+            elementId
+          );
+
+
+        if (!container) {
+          return;
+        }
+
+
+        const categoryNews =
+          NEWS
+            .filter(
+              news =>
+                news.category ===
+                category
+            )
+            .slice(0, 4);
+
+
+        container.innerHTML =
+          categoryNews
+            .map(
+              (news) => {
 
                 return `
-                  <article class="mini-news-card">
+
+                  <article
+                    class="mini-news-card"
+                  >
 
                     <a
                       href="${getArticleUrl(news)}"
                       class="mini-news-image"
                     >
-                      ${imageHTML(news)}
+
+                      ${imageHTML(
+                        news
+                      )}
+
                     </a>
 
-                    <div class="mini-news-body">
 
-                      <span class="mini-category">
-                        ${escapeHTML(news.category)}
+                    <div
+                      class="mini-news-body"
+                    >
+
+                      <span
+                        class="mini-category"
+                      >
+                        ${escapeHTML(
+                          news.category
+                        )}
                       </span>
 
+
                       <h4>
-                        <a href="${getArticleUrl(news)}">
-                          ${escapeHTML(news.title)}
+
+                        <a
+                          href="${getArticleUrl(news)}"
+                        >
+                          ${escapeHTML(
+                            news.title
+                          )}
                         </a>
+
                       </h4>
 
+
                       <time>
-                        ${formatShortDate(news.created_at)}
+
+                        ${formatShortDate(
+                          news.created_at
+                        )}
+
                       </time>
 
                     </div>
 
                   </article>
+
                 `;
 
-              })
-              .join("");
-
-        });
-
-    };
-
-    renderCategories();
-
-    /* ================= ARAMA ================= */
-
-    const searchPanel =
-      $("#searchPanel");
-
-    const searchInput =
-      $("#searchInput");
-
-    const searchResults =
-      $("#searchResults");
-
-    const openSearch = () => {
-
-      searchPanel.classList.add("open");
-
-      setTimeout(() => {
-
-        searchInput.focus();
-
-      }, 100);
-
-    };
-
-    const closeSearch = () => {
-
-      searchPanel.classList.remove("open");
-
-      searchInput.value = "";
-
-      searchResults.innerHTML = "";
-
-    };
-
-    $("#searchToggle").addEventListener(
-      "click",
-      openSearch
-    );
-
-    $("#searchClose").addEventListener(
-      "click",
-      closeSearch
-    );
-
-    searchInput.addEventListener(
-      "input",
-      () => {
-
-        const query =
-          searchInput.value
-            .trim()
-            .toLocaleLowerCase("tr-TR");
-
-        if (!query) {
-
-          searchResults.innerHTML = "";
-
-          return;
-
-        }
-
-        const results =
-          NEWS.filter(news => {
-
-            const text = [
-              news.title,
-              news.summary,
-              news.category,
-              news.content
-            ]
-              .join(" ")
-              .toLocaleLowerCase("tr-TR");
-
-            return text.includes(query);
-
-          })
-          .slice(0, 8);
-
-        if (!results.length) {
-
-          searchResults.innerHTML = `
-            <div class="search-empty">
-              Aradığınız haber bulunamadı.
-            </div>
-          `;
-
-          return;
-
-        }
-
-        searchResults.innerHTML =
-          results.map(news => {
-
-            return `
-              <a
-                href="${getArticleUrl(news)}"
-                class="search-result"
-              >
-
-                <span>
-                  ${escapeHTML(news.category)}
-                </span>
-
-                <strong>
-                  ${escapeHTML(news.title)}
-                </strong>
-
-                <small>
-                  ${formatShortDate(news.created_at)}
-                </small>
-
-              </a>
-            `;
-
-          }).join("");
+              }
+            )
+            .join("");
 
       }
     );
 
-    /* ================= TEMA ================= */
+};
 
-    const savedTheme =
-      localStorage.getItem("gunora-theme");
 
-    if (savedTheme === "dark") {
+/* =====================================================
+   CANLI HABERLERİ HAZIRLA
+===================================================== */
 
-      document.body.classList.add("dark");
+function setupNews() {
 
-      $("#themeToggle").textContent = "☀️";
+  /*
+   * Manşet
+   */
+
+  const featured =
+    NEWS
+      .filter(
+        news =>
+          news.featured
+      )
+      .slice(0, 10);
+
+
+  heroNews =
+    featured.length
+      ? featured
+      : NEWS.slice(0, 10);
+
+
+  /*
+   * Son dakika
+   */
+
+  breakingNews =
+    NEWS.filter(
+      news =>
+        news.breaking
+    );
+
+
+  /*
+   * Eğer API'den breaking
+   * gelmediyse en yeni 5 haberi
+   * son dakika bandında göster.
+   */
+
+  if (!breakingNews.length) {
+
+    breakingNews =
+      [...NEWS]
+        .sort(
+          (a, b) =>
+            new Date(
+              b.created_at
+            ) -
+            new Date(
+              a.created_at
+            )
+        )
+        .slice(0, 5);
+
+  }
+
+
+  heroIndex = 0;
+
+  breakingIndex = 0;
+
+
+  renderHero();
+
+  renderBreaking();
+
+  renderNewsGrid();
+
+  renderPopular();
+
+  renderCategories();
+
+
+  startHeroTimer();
+
+
+  clearInterval(
+    breakingTimer
+  );
+
+
+  breakingTimer =
+    setInterval(
+      nextBreaking,
+      5000
+    );
+
+
+  console.log(
+    "GÜNORA hazır:",
+    NEWS.length,
+    "haber"
+  );
+
+}
+
+
+/* =====================================================
+   CANLI API
+===================================================== */
+
+async function loadNews() {
+
+  try {
+
+    console.log(
+      "GÜNORA: canlı haberler alınıyor..."
+    );
+
+
+    const response =
+      await fetch(
+        "/api/news",
+        {
+          method: "GET",
+          cache: "no-store"
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "API HTTP " +
+        response.status
+      );
 
     }
 
-    $("#themeToggle").addEventListener(
-      "click",
-      () => {
 
-        const isDark =
-          document.body.classList.toggle("dark");
+    const data =
+      await response.json();
 
-        localStorage.setItem(
-          "gunora-theme",
-          isDark ? "dark" : "light"
+
+    if (
+      !data.success ||
+      !Array.isArray(
+        data.news
+      ) ||
+      !data.news.length
+    ) {
+
+      throw new Error(
+        "API haber döndürmedi."
+      );
+
+    }
+
+
+    NEWS =
+      data.news.map(
+        (article, index) => {
+
+          return {
+
+            ...article,
+
+            id:
+              article.id ||
+              `live-${index}`,
+
+            title:
+              article.title ||
+              "Başlıksız haber",
+
+            summary:
+              article.summary ||
+              article.title ||
+              "",
+
+            content:
+              article.content ||
+              article.summary ||
+              article.title ||
+              "",
+
+            category:
+              article.category ||
+              "Gündem",
+
+            source:
+              article.source ||
+              "GÜNORA",
+
+            author:
+              article.author ||
+              "GÜNORA",
+
+            created_at:
+              article.created_at ||
+              new Date()
+                .toISOString(),
+
+            views:
+              Number(
+                article.views || 0
+              ),
+
+            breaking:
+              Boolean(
+                article.breaking
+              ),
+
+            featured:
+              Boolean(
+                article.featured
+              ),
+
+            image:
+              article.image ||
+              "",
+
+            externalUrl:
+              article.externalUrl ||
+              "",
+
+            slug:
+              article.slug ||
+              (
+                "haber-" +
+                index +
+                "-" +
+                Date.now()
+              )
+
+          };
+
+        }
+      );
+
+
+    console.log(
+      "GÜNORA canlı haber:",
+      NEWS.length
+    );
+
+
+    setupNews();
+
+
+  } catch (error) {
+
+    console.error(
+      "GÜNORA API hatası:",
+      error
+    );
+
+
+    /*
+     * API çalışmazsa
+     * data/news.js yedek olarak kullanılır.
+     */
+
+    if (
+      Array.isArray(
+        window.GUNORA_NEWS
+      ) &&
+      window.GUNORA_NEWS.length
+    ) {
+
+      NEWS =
+        [...window.GUNORA_NEWS];
+
+
+      console.warn(
+        "Canlı API kullanılamadı."
+      );
+
+
+      console.warn(
+        "Yerel haberler kullanılıyor:",
+        NEWS.length
+      );
+
+
+      setupNews();
+
+    } else {
+
+      const grid =
+        $("#newsGrid");
+
+
+      if (grid) {
+
+        grid.innerHTML = `
+
+          <div class="news-loading">
+            Haberler şu anda yüklenemiyor.
+          </div>
+
+        `;
+
+      }
+
+    }
+
+  }
+
+}
+
+
+/* =====================================================
+   MANŞET BUTONLARI
+===================================================== */
+
+const heroNext =
+  $("#heroNext");
+
+
+const heroPrev =
+  $("#heroPrev");
+
+
+if (heroNext) {
+
+  heroNext.addEventListener(
+    "click",
+    () => {
+
+      nextHero();
+
+      startHeroTimer();
+
+    }
+  );
+
+}
+
+
+if (heroPrev) {
+
+  heroPrev.addEventListener(
+    "click",
+    () => {
+
+      prevHero();
+
+      startHeroTimer();
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   MANŞET NOKTALARI
+===================================================== */
+
+document.addEventListener(
+  "click",
+  (event) => {
+
+    const dot =
+      event.target.closest(
+        ".hero-dot"
+      );
+
+
+    if (dot) {
+
+      heroIndex =
+        Number(
+          dot.dataset.index
         );
 
-        $("#themeToggle").textContent =
-          isDark ? "☀️" : "🌙";
+
+      updateHero();
+
+      startHeroTimer();
+
+    }
+
+
+    const sideItem =
+      event.target.closest(
+        ".hero-side-item"
+      );
+
+
+    if (
+      sideItem &&
+      !event.target.closest("strong")
+    ) {
+
+      heroIndex =
+        Number(
+          sideItem.dataset.index
+        );
+
+
+      updateHero();
+
+      startHeroTimer();
+
+    }
+
+  }
+);
+
+
+/* =====================================================
+   SON DAKİKA BUTONLARI
+===================================================== */
+
+const breakingNextBtn =
+  $("#breakingNext");
+
+
+const breakingPrevBtn =
+  $("#breakingPrev");
+
+
+if (breakingNextBtn) {
+
+  breakingNextBtn.addEventListener(
+    "click",
+    nextBreaking
+  );
+
+}
+
+
+if (breakingPrevBtn) {
+
+  breakingPrevBtn.addEventListener(
+    "click",
+    prevBreaking
+  );
+
+}
+
+
+/* =====================================================
+   ARAMA
+===================================================== */
+
+const searchPanel =
+  $("#searchPanel");
+
+
+const searchInput =
+  $("#searchInput");
+
+
+const searchResults =
+  $("#searchResults");
+
+
+const openSearch = () => {
+
+  if (!searchPanel) {
+    return;
+  }
+
+
+  searchPanel.classList.add(
+    "open"
+  );
+
+
+  setTimeout(
+    () => {
+
+      if (searchInput) {
+        searchInput.focus();
+      }
+
+    },
+    100
+  );
+
+};
+
+
+const closeSearch = () => {
+
+  if (!searchPanel) {
+    return;
+  }
+
+
+  searchPanel.classList.remove(
+    "open"
+  );
+
+
+  if (searchInput) {
+    searchInput.value = "";
+  }
+
+
+  if (searchResults) {
+    searchResults.innerHTML = "";
+  }
+
+};
+
+
+const searchToggle =
+  $("#searchToggle");
+
+
+const searchClose =
+  $("#searchClose");
+
+
+if (searchToggle) {
+
+  searchToggle.addEventListener(
+    "click",
+    openSearch
+  );
+
+}
+
+
+if (searchClose) {
+
+  searchClose.addEventListener(
+    "click",
+    closeSearch
+  );
+
+}
+
+
+if (searchInput) {
+
+  searchInput.addEventListener(
+    "input",
+    () => {
+
+      const query =
+        searchInput.value
+          .trim()
+          .toLocaleLowerCase(
+            "tr-TR"
+          );
+
+
+      if (!query) {
+
+        searchResults.innerHTML =
+          "";
+
+        return;
 
       }
-    );
 
-    /* ================= MOBİL MENÜ ================= */
 
-    const mobileMenu =
-      $("#mobileMenu");
+      const results =
+        NEWS
+          .filter(
+            news => {
 
-    $("#mobileMenuBtn").addEventListener(
-      "click",
-      () => {
+              const text =
+                [
+                  news.title,
+                  news.summary,
+                  news.category,
+                  news.content
+                ]
+                  .join(" ")
+                  .toLocaleLowerCase(
+                    "tr-TR"
+                  );
 
-        mobileMenu.classList.toggle("open");
+
+              return text.includes(
+                query
+              );
+
+            }
+          )
+          .slice(0, 8);
+
+
+      if (!results.length) {
+
+        searchResults.innerHTML = `
+
+          <div class="search-empty">
+            Aradığınız haber bulunamadı.
+          </div>
+
+        `;
+
+        return;
 
       }
-    );
 
-    document.querySelectorAll(
-      ".mobile-menu a"
-    ).forEach(link => {
+
+      searchResults.innerHTML =
+        results
+          .map(
+            news => {
+
+              return `
+
+                <a
+                  href="${getArticleUrl(news)}"
+                  class="search-result"
+                >
+
+                  <span>
+                    ${escapeHTML(
+                      news.category
+                    )}
+                  </span>
+
+                  <strong>
+                    ${escapeHTML(
+                      news.title
+                    )}
+                  </strong>
+
+                  <small>
+                    ${formatShortDate(
+                      news.created_at
+                    )}
+                  </small>
+
+                </a>
+
+              `;
+
+            }
+          )
+          .join("");
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   TEMA
+===================================================== */
+
+const savedTheme =
+  localStorage.getItem(
+    "gunora-theme"
+  );
+
+
+if (
+  savedTheme === "dark"
+) {
+
+  document.body.classList.add(
+    "dark"
+  );
+
+
+  const themeToggle =
+    $("#themeToggle");
+
+
+  if (themeToggle) {
+
+    themeToggle.textContent =
+      "☀️";
+
+  }
+
+}
+
+
+const themeToggle =
+  $("#themeToggle");
+
+
+if (themeToggle) {
+
+  themeToggle.addEventListener(
+    "click",
+    () => {
+
+      const isDark =
+        document.body.classList.toggle(
+          "dark"
+        );
+
+
+      localStorage.setItem(
+        "gunora-theme",
+        isDark
+          ? "dark"
+          : "light"
+      );
+
+
+      themeToggle.textContent =
+        isDark
+          ? "☀️"
+          : "🌙";
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   MOBİL MENÜ
+===================================================== */
+
+const mobileMenu =
+  $("#mobileMenu");
+
+
+const mobileMenuBtn =
+  $("#mobileMenuBtn");
+
+
+if (mobileMenuBtn) {
+
+  mobileMenuBtn.addEventListener(
+    "click",
+    () => {
+
+      if (mobileMenu) {
+
+        mobileMenu.classList.toggle(
+          "open"
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+document
+  .querySelectorAll(
+    ".mobile-menu a"
+  )
+  .forEach(
+    link => {
 
       link.addEventListener(
         "click",
         () => {
 
-          mobileMenu.classList.remove("open");
+          if (mobileMenu) {
+
+            mobileMenu.classList.remove(
+              "open"
+            );
+
+          }
 
         }
       );
 
-    });
+    }
+  );
 
-    /* ================= YUKARI ÇIK ================= */
 
-    const scrollTop =
-      $("#scrollTop");
+/* =====================================================
+   YUKARI ÇIK + OKUMA İLERLEMESİ
+===================================================== */
 
-    window.addEventListener(
-      "scroll",
-      () => {
+const scrollTop =
+  $("#scrollTop");
 
-        if (window.scrollY > 500) {
 
-          scrollTop.classList.add("show");
+window.addEventListener(
+  "scroll",
+  () => {
 
-        } else {
+    if (scrollTop) {
 
-          scrollTop.classList.remove("show");
+      if (
+        window.scrollY > 500
+      ) {
 
-        }
+        scrollTop.classList.add(
+          "show"
+        );
 
-        const documentHeight =
-          document.documentElement.scrollHeight -
-          window.innerHeight;
+      } else {
 
-        const progress =
-          documentHeight > 0
-            ? (window.scrollY / documentHeight) * 100
-            : 0;
+        scrollTop.classList.remove(
+          "show"
+        );
 
-        $("#readingProgress").style.width =
-          `${progress}%`;
+      }
 
-      },
-      { passive: true }
-    );
+    }
 
-    scrollTop.addEventListener(
-      "click",
-      () => {
 
-        window.scrollTo({
+    const documentHeight =
+      document.documentElement
+        .scrollHeight -
+      window.innerHeight;
+
+
+    const progress =
+      documentHeight > 0
+        ? (
+            window.scrollY /
+            documentHeight
+          ) * 100
+        : 0;
+
+
+    const readingProgress =
+      $("#readingProgress");
+
+
+    if (readingProgress) {
+
+      readingProgress.style.width =
+        `${progress}%`;
+
+    }
+
+  },
+  {
+    passive: true
+  }
+);
+
+
+if (scrollTop) {
+
+  scrollTop.addEventListener(
+    "click",
+    () => {
+
+      window.scrollTo(
+        {
           top: 0,
           behavior: "smooth"
-        });
-
-      }
-    );
-
-    /* ================= ESC ================= */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key === "Escape") {
-
-          closeSearch();
-
-          mobileMenu.classList.remove("open");
-
         }
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   ESC
+===================================================== */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      closeSearch();
+
+
+      if (mobileMenu) {
+
+        mobileMenu.classList.remove(
+          "open"
+        );
 
       }
-    );
 
-  </script>
+    }
+
+  }
+);
+
+
+/* =====================================================
+   BAŞLAT
+===================================================== */
+
+loadNews();
+
+</script>
 
 </body>
 </html>
