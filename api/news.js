@@ -3,15 +3,15 @@ export default async function handler(req, res) {
     const feeds = [
       {
         name: "Gündem",
-        url: "https://news.google.com/rss/search?q=Türkiye+gündem&hl=tr&gl=TR&ceid=TR:tr"
+        url: "https://news.google.com/rss/search?q=Türkiye%20gündem&hl=tr&gl=TR&ceid=TR:tr"
       },
       {
         name: "Spor",
-        url: "https://news.google.com/rss/search?q=Türkiye+spor&hl=tr&gl=TR&ceid=TR:tr"
+        url: "https://news.google.com/rss/search?q=Türkiye%20spor&hl=tr&gl=TR&ceid=TR:tr"
       },
       {
         name: "Ekonomi",
-        url: "https://news.google.com/rss/search?q=Türkiye+ekonomi&hl=tr&gl=TR&ceid=TR:tr"
+        url: "https://news.google.com/rss/search?q=Türkiye%20ekonomi&hl=tr&gl=TR&ceid=TR:tr"
       },
       {
         name: "Dünya",
@@ -27,16 +27,20 @@ export default async function handler(req, res) {
 
     for (const feed of feeds) {
       try {
+        console.log("GÜNORA RSS:", feed.name);
+
         const response = await fetch(feed.url, {
           headers: {
             "User-Agent":
-              "Mozilla/5.0 (compatible; GUNORA/1.0)"
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
+            "Accept":
+              "application/rss+xml, application/xml, text/xml, */*"
           }
         });
 
         if (!response.ok) {
           console.error(
-            `${feed.name} RSS hatası:`,
+            `${feed.name} RSS HTTP:`,
             response.status
           );
           continue;
@@ -44,17 +48,26 @@ export default async function handler(req, res) {
 
         const xml = await response.text();
 
+        console.log(
+          `${feed.name}: RSS uzunluğu`,
+          xml.length
+        );
+
         const items =
-          xml.match(
-            /<item>[\s\S]*?<\/item>/gi
-          ) || [];
+          xml.match(/<item[\s\S]*?<\/item>/gi) || [];
+
+        console.log(
+          `${feed.name}: ${items.length} haber bulundu`
+        );
 
         for (const item of items.slice(0, 10)) {
-          const title =
-            getXMLValue(item, "title");
+          const title = cleanHTML(
+            getXMLValue(item, "title")
+          );
 
-          const link =
-            getXMLValue(item, "link");
+          const link = cleanHTML(
+            getXMLValue(item, "link")
+          );
 
           const pubDate =
             getXMLValue(item, "pubDate");
@@ -62,17 +75,25 @@ export default async function handler(req, res) {
           const source =
             getSource(item) || feed.name;
 
+          if (!title || !link) {
+            continue;
+          }
+
           /*
-           * =================================================
-           * GÖRSEL BUL
-           * =================================================
+           * ==========================================
+           * GÖRSEL 1
+           * RSS MEDIA
+           * ==========================================
            */
 
           let image =
             getImageFromMedia(item);
 
           /*
-           * enclosure varsa onu da dene
+           * ==========================================
+           * GÖRSEL 2
+           * ENCLOSURE
+           * ==========================================
            */
 
           if (!image) {
@@ -81,9 +102,10 @@ export default async function handler(req, res) {
           }
 
           /*
-           * Google News bazı RSS kayıtlarında
-           * görseli description/content içinde
-           * gönderebilir.
+           * ==========================================
+           * GÖRSEL 3
+           * RSS HTML
+           * ==========================================
            */
 
           if (!image) {
@@ -92,47 +114,48 @@ export default async function handler(req, res) {
           }
 
           /*
-           * =================================================
-           * HABER
-           * =================================================
+           * ==========================================
+           * TARİH
+           * ==========================================
            */
 
-          if (!title || !link) {
-            continue;
-          }
-
-          const createdAt =
+          const parsedDate =
             pubDate &&
             !Number.isNaN(
               new Date(pubDate).getTime()
             )
-              ? new Date(pubDate).toISOString()
-              : new Date().toISOString();
+              ? new Date(pubDate)
+              : new Date();
+
+          /*
+           * ==========================================
+           * HABERİ EKLE
+           * ==========================================
+           */
 
           results.push({
             id:
-              `${feed.name}-${results.length + 1}`,
+              `${slugify(feed.name)}-${Date.now()}-${results.length}`,
 
-            title:
-              cleanHTML(title),
+            title,
 
             summary:
-              cleanHTML(title),
+              title,
 
             content:
-              cleanHTML(title),
+              title,
 
             category:
               feed.name,
 
             date:
-              formatDate(pubDate),
+              formatDate(parsedDate),
 
             time:
-              formatTime(pubDate),
+              formatTime(parsedDate),
 
             created_at:
-              createdAt,
+              parsedDate.toISOString(),
 
             source:
               cleanHTML(source),
@@ -140,9 +163,6 @@ export default async function handler(req, res) {
             author:
               cleanHTML(source),
 
-            /*
-             * ARTIK BOŞ DEĞİL
-             */
             image:
               image || "",
 
@@ -168,34 +188,31 @@ export default async function handler(req, res) {
     }
 
     /*
-     * =====================================================
+     * ==========================================
      * TEKRAR EDEN HABERLERİ TEMİZLE
-     * =====================================================
+     * ==========================================
      */
 
     const uniqueNews = [];
-
     const seen = new Set();
 
     for (const news of results) {
-      const key =
+      const key = normalizeTitle(
         news.title
-          .toLocaleLowerCase("tr-TR")
-          .trim();
+      );
 
       if (seen.has(key)) {
         continue;
       }
 
       seen.add(key);
-
       uniqueNews.push(news);
     }
 
     /*
-     * =====================================================
+     * ==========================================
      * YENİDEN ESKİYE SIRALA
-     * =====================================================
+     * ==========================================
      */
 
     uniqueNews.sort(
@@ -205,9 +222,9 @@ export default async function handler(req, res) {
     );
 
     /*
-     * =====================================================
-     * MANŞETLER
-     * =====================================================
+     * ==========================================
+     * MANŞET + SON DAKİKA
+     * ==========================================
      */
 
     uniqueNews.forEach(
@@ -221,10 +238,15 @@ export default async function handler(req, res) {
     );
 
     /*
-     * =====================================================
+     * ==========================================
      * CEVAP
-     * =====================================================
+     * ==========================================
      */
+
+    console.log(
+      "GÜNORA toplam haber:",
+      uniqueNews.length
+    );
 
     res.status(200).json({
       success: true,
@@ -255,19 +277,16 @@ XML DEĞERİ AL
 =========================================================
 */
 
-function getXMLValue(
-  xml,
-  tag
-) {
+function getXMLValue(xml, tag) {
   const cdataRegex =
     new RegExp(
-      `<${tag}[^>]*>\\s*<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>\\s*<\\/${tag}>`,
+      `<${tag}[^>]*>\\s*<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>\\s*</${tag}>`,
       "i"
     );
 
   const normalRegex =
     new RegExp(
-      `<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`,
+      `<${tag}[^>]*>([\\s\\S]*?)</${tag}>`,
       "i"
     );
 
@@ -313,19 +332,16 @@ function getSource(xml) {
 
 /*
 =========================================================
-MEDIA:CONTENT
+MEDIA CONTENT / THUMBNAIL
 =========================================================
 */
 
 function getImageFromMedia(xml) {
   const patterns = [
     /<media:content[^>]+url=["']([^"']+)["']/i,
-
     /<media:thumbnail[^>]+url=["']([^"']+)["']/i,
-
-    /<media:content[^>]+url=([^ >]+)/i,
-
-    /<media:thumbnail[^>]+url=([^ >]+)/i
+    /<media:content[^>]+url=([^\s>]+)/i,
+    /<media:thumbnail[^>]+url=([^\s>]+)/i
   ];
 
   for (const pattern of patterns) {
@@ -333,10 +349,18 @@ function getImageFromMedia(xml) {
       xml.match(pattern);
 
     if (match?.[1]) {
-      return decodeHTML(
-        match[1]
-          .replace(/^["']|["']$/g, "")
-      );
+      const image =
+        decodeHTML(
+          match[1]
+            .replace(
+              /^["']|["']$/g,
+              ""
+            )
+        );
+
+      if (isValidImageUrl(image)) {
+        return image;
+      }
     }
   }
 
@@ -351,48 +375,9 @@ ENCLOSURE
 */
 
 function getEnclosureImage(xml) {
-  const match =
-    xml.match(
-      /<enclosure[^>]+type=["']image\/[^"']+["'][^>]+url=["']([^"']+)["']/i
-    );
-
-  if (match?.[1]) {
-    return decodeHTML(
-      match[1]
-    );
-  }
-
-  const reverse =
-    xml.match(
-      /<enclosure[^>]+url=["']([^"']+)["'][^>]+type=["']image\/[^"']+["']/i
-    );
-
-  if (reverse?.[1]) {
-    return decodeHTML(
-      reverse[1]
-    );
-  }
-
-  return "";
-}
-
-
-/*
-=========================================================
-HTML İÇİNDEN GÖRSEL BUL
-=========================================================
-*/
-
-function getImageFromHTML(xml) {
   const patterns = [
-
-    /<img[^>]+src=["']([^"']+)["']/i,
-
-    /<img[^>]+src=([^ >]+)/i,
-
-    /<image[^>]*>\s*<url>([\s\S]*?)<\/url>/i,
-
-    /https?:\/\/[^"' <]+\.(?:jpg|jpeg|png|webp)(?:\?[^"' <]*)?/i
+    /<enclosure[^>]+url=["']([^"']+)["'][^>]*type=["']image\/[^"']+["']/i,
+    /<enclosure[^>]+type=["']image\/[^"']+["'][^>]*url=["']([^"']+)["']/i
   ];
 
   for (const pattern of patterns) {
@@ -401,39 +386,79 @@ function getImageFromHTML(xml) {
 
     if (match?.[1]) {
       const image =
-        decodeHTML(
-          match[1]
-            .replace(/^["']|["']$/g, "")
-        );
+        decodeHTML(match[1]);
 
-      if (
-        image.startsWith("http://") ||
-        image.startsWith("https://")
-      ) {
-        return image;
-      }
-    }
-
-    if (
-      match &&
-      match[0] &&
-      pattern.source.includes(
-        "https?:"
-      )
-    ) {
-      const image =
-        decodeHTML(match[0]);
-
-      if (
-        image.startsWith("http://") ||
-        image.startsWith("https://")
-      ) {
+      if (isValidImageUrl(image)) {
         return image;
       }
     }
   }
 
   return "";
+}
+
+
+/*
+=========================================================
+HTML İÇİNDEN GÖRSEL
+=========================================================
+*/
+
+function getImageFromHTML(xml) {
+  const patterns = [
+    /<img[^>]+src=["']([^"']+)["']/i,
+
+    /<img[^>]+data-src=["']([^"']+)["']/i,
+
+    /<img[^>]+data-lazy-src=["']([^"']+)["']/i,
+
+    /<image[^>]*>[\s\S]*?<url>([\s\S]*?)<\/url>/i,
+
+    /(https?:\/\/[^"' <]+\.(?:jpg|jpeg|png|webp)(?:\?[^"' <]*)?)/i
+  ];
+
+  for (const pattern of patterns) {
+    const match =
+      xml.match(pattern);
+
+    if (!match?.[1]) {
+      continue;
+    }
+
+    const image =
+      decodeHTML(
+        match[1]
+          .trim()
+          .replace(
+            /^["']|["']$/g,
+            ""
+          )
+      );
+
+    if (isValidImageUrl(image)) {
+      return image;
+    }
+  }
+
+  return "";
+}
+
+
+/*
+=========================================================
+GÖRSEL URL KONTROLÜ
+=========================================================
+*/
+
+function isValidImageUrl(url) {
+  if (!url) {
+    return false;
+  }
+
+  return (
+    url.startsWith("http://") ||
+    url.startsWith("https://")
+  );
 }
 
 
@@ -453,6 +478,10 @@ function cleanHTML(text) {
       .replace(
         /<[^>]*>/g,
         ""
+      )
+      .replace(
+        /\s+/g,
+        " "
       )
       .trim()
   );
@@ -510,18 +539,76 @@ function decodeHTML(text) {
 
 /*
 =========================================================
+BAŞLIK NORMALİZE
+=========================================================
+*/
+
+function normalizeTitle(title) {
+  return String(title ?? "")
+    .toLocaleLowerCase("tr-TR")
+    .replace(
+      /[^a-z0-9ğüşöçıİĞÜŞÖÇ\s]/gi,
+      ""
+    )
+    .replace(
+      /\s+/g,
+      " "
+    )
+    .trim();
+}
+
+
+/*
+=========================================================
+SLUG
+=========================================================
+*/
+
+function slugify(text) {
+  return String(text ?? "")
+    .toLocaleLowerCase("tr-TR")
+    .replace(
+      /ğ/g,
+      "g"
+    )
+    .replace(
+      /ü/g,
+      "u"
+    )
+    .replace(
+      /ş/g,
+      "s"
+    )
+    .replace(
+      /ı/g,
+      "i"
+    )
+    .replace(
+      /ö/g,
+      "o"
+    )
+    .replace(
+      /ç/g,
+      "c"
+    )
+    .replace(
+      /[^a-z0-9]+/g,
+      "-"
+    )
+    .replace(
+      /^-+|-+$/g,
+      ""
+    );
+}
+
+
+/*
+=========================================================
 TARİH
 =========================================================
 */
 
 function formatDate(date) {
-  if (!date) {
-    return new Date()
-      .toLocaleDateString(
-        "tr-TR"
-      );
-  }
-
   const parsed =
     new Date(date);
 
@@ -550,17 +637,6 @@ SAAT
 */
 
 function formatTime(date) {
-  if (!date) {
-    return new Date()
-      .toLocaleTimeString(
-        "tr-TR",
-        {
-          hour: "2-digit",
-          minute: "2-digit"
-        }
-      );
-  }
-
   const parsed =
     new Date(date);
 
