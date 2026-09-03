@@ -173,8 +173,367 @@
         class="article-layout"
       >
 
-        <!-- HABER BURAYA GELECEK -->
+       const newsData = [
+  {
+    id: 1,
+    title: "Ağustos ayı enflasyonu açıklandı",
+    summary: "TÜİK verilerine göre tüketici fiyatları ağustosta aylık yüzde 1,84 arttı. Yıllık enflasyon ise yüzde 31,51 olarak gerçekleşti.",
+    category: "Ekonomi",
+    date: "3 Eylül 2026",
+    time: "10:00",
+    source: "GÜNORA",
+    image: "/images/news/enflasyon.jpg",
+    featured: true
+  },
 
+  {
+    id: 2,
+    title: "Kira zam oranı belli oldu",
+    summary: "Ağustos enflasyon verilerinin açıklanmasıyla eylül ayında kira sözleşmesini yenileyecek kiracıları ilgilendiren tavan zam oranı da netleşti.",
+    category: "Ekonomi",
+    date: "3 Eylül 2026",
+    time: "10:20",
+    source: "GÜNORA",
+    image: "/images/news/kira.jpg",
+    featured: false
+  },
+
+  {
+    id: 3,
+    title: "Şimşek'ten enflasyon mesajı",
+    summary: "Hazine ve Maliye Bakanı Mehmet Şimşek, açıklanan ağustos enflasyon verilerinin ardından dezenflasyon sürecine ilişkin değerlendirmede bulundu.",
+    category: "Ekonomi",
+    date: "3 Eylül 2026",
+    time: "11:15",
+    source: "GÜNORA",
+    image: "/images/news/simsek.jpg",
+    featured: false
+  },
+
+  {
+    id: 4,
+    title: "Altın fiyatlarında hareketlilik sürüyor",
+    summary: "Küresel piyasalarda altın fiyatlarının seyri yatırımcıların gündeminde. Ons altın ağustos ayını güçlü bir yükselişle tamamladı.",
+    category: "Ekonomi",
+    date: "3 Eylül 2026",
+    time: "16:36",
+    source: "GÜNORA",
+    image: "/images/news/altin.jpg",
+    featured: false
+  },
+
+  {
+    id: 5,
+    title: "Ağustos ayında ihracatta yeni rekor",
+    summary: "Türkiye'nin ağustos ayı ihracatı geçen yılın aynı dönemine göre artış göstererek yeni bir aylık rekora ulaştı.",
+    category: "Ekonomi",
+    date: "3 Eylül 2026",
+    time: "14:30",
+    source: "GÜNORA",
+    image: "/images/news/ihracat.jpg",
+    featured: false
+  },
+
+  {
+    id: 6,
+    title: "Fenerbahçe-Beşiktaş derbisinin hakemi belli oldu",
+    summary: "Süper Lig'in 4. haftasında oynanacak Fenerbahçe-Beşiktaş karşılaşmasını Halil Umut Meler yönetecek.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "15:45",
+    source: "GÜNORA",
+    image: "/images/news/fenerbahce-besiktas.jpg",
+    featured: true
+  },
+
+  {
+    id: 7,
+    title: "Derbi için geri sayım başladı",
+    summary: "Fenerbahçe ile Beşiktaş arasında oynanacak dev karşılaşma öncesinde iki takımda hazırlıklar devam ediyor.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "16:00",
+    source: "GÜNORA",
+    image: "/images/news/derbi.jpg",
+    featured: false
+  },
+
+  {
+    id: 8,
+    title: "Beşiktaş derbi hazırlıklarını sürdürdü",
+    summary: "Siyah-beyazlı ekip, Süper Lig'in 4. haftasında Fenerbahçe ile oynayacağı mücadele öncesi çalışmalarına devam etti.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "14:10",
+    source: "GÜNORA",
+    image: "/images/news/besiktas.jpg",
+    featured: false
+  },
+
+  {
+    id: 9,
+    title: "Beşiktaş'ın yeni transferi İstanbul'a geliyor",
+    summary: "Siyah-beyazlıların yeni savunma oyuncusu Ümit Akdağ'ın İstanbul'a geliş saati belli oldu.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "13:40",
+    source: "GÜNORA",
+    image: "/images/news/umit-akdag.jpg",
+    featured: false
+  },
+
+  {
+    id: 10,
+    title: "Fenerbahçe'de UEFA soruşturması gündemde",
+    summary: "Fenerbahçe, Lyon karşılaşmasının ardından yaşanan olaylarla ilgili UEFA'nın Matteo Guendouzi ve Mason Greenwood hakkında disiplin süreci başlattığını açıkladı.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "15:10",
+    source: "GÜNORA",
+    image: "/images/news/uefa.jpg",
+    featured: false
+  },
+
+  {
+    id: 11,
+    title: "Galatasaray'da Başakşehir maçı hazırlıkları",
+    summary: "Sarı-kırmızılı ekip, Süper Lig'in 4. haftasında oynayacağı Başakşehir karşılaşmasına hazırlanıyor.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "12:50",
+    source: "GÜNORA",
+    image: "/images/news/galatasaray.jpg",
+    featured: false
+  },
+
+  {
+    id: 12,
+    title: "Filenin Sultanları Almanya karşısında",
+    summary: "A Milli Kadın Voleybol Takımı, Avrupa Voleybol Şampiyonası çeyrek finalinde Almanya ile karşı karşıya geliyor.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "19:00",
+    source: "GÜNORA",
+    image: "/images/news/filenin-sultanlari.jpg",
+    featured: true
+  },
+
+  {
+    id: 13,
+    title: "Süper Lig'de 4. hafta hakemleri açıklandı",
+    summary: "Türkiye Futbol Federasyonu, Trendyol Süper Lig'in 4. haftasında görev yapacak hakemleri duyurdu.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "15:30",
+    source: "GÜNORA",
+    image: "/images/news/tff.jpg",
+    featured: false
+  },
+
+  {
+    id: 14,
+    title: "Trabzonspor'da transfer hareketliliği",
+    summary: "Karadeniz ekibinde transfer döneminin son günleri yaklaşırken kadro planlamasıyla ilgili çalışmalar devam ediyor.",
+    category: "Spor",
+    date: "3 Eylül 2026",
+    time: "13:20",
+    source: "GÜNORA",
+    image: "/images/news/trabzonspor.jpg",
+    featured: false
+  },
+
+  {
+    id: 15,
+    title: "MİT Başkanı Kalın'dan kritik görüşme",
+    summary: "MİT Başkanı İbrahim Kalın, Yunanistan Ulusal İstihbarat Teşkilatı Başkanı Demiris ile görüştü.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "16:55",
+    source: "GÜNORA",
+    image: "/images/news/mit.jpg",
+    featured: true
+  },
+
+  {
+    id: 16,
+    title: "Gemi kazasında soruşturma sürüyor",
+    summary: "Marmara Denizi'ndeki gemi kazasının ardından soruşturma kapsamında kayıtlar ve telsiz görüşmeleri incelemeye alındı.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "16:28",
+    source: "GÜNORA",
+    image: "/images/news/gemi-kazasi.jpg",
+    featured: true
+  },
+
+  {
+    id: 17,
+    title: "Gemi kazasında 6 şüpheli adliyeye sevk edildi",
+    summary: "Alsu gemisinde görev yapan 9 şüpheliden 6'sı soruşturma kapsamında adliyeye sevk edildi.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "16:48",
+    source: "GÜNORA",
+    image: "/images/news/alsu.jpg",
+    featured: false
+  },
+
+  {
+    id: 18,
+    title: "Sarıyer'de yangın: 8 kişi kurtarıldı",
+    summary: "İstanbul Sarıyer'de çıkan yangında çatıda mahsur kalan 8 kişi ekiplerin çalışmasıyla kurtarıldı.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "16:20",
+    source: "GÜNORA",
+    image: "/images/news/sariyer-yangin.jpg",
+    featured: false
+  },
+
+  {
+    id: 19,
+    title: "MSB'den Suriye açıklaması",
+    summary: "Milli Savunma Bakanlığı, Suriye'ye yönelik desteğin devam edeceğini açıkladı.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "12:00",
+    source: "GÜNORA",
+    image: "/images/news/msb.jpg",
+    featured: false
+  },
+
+  {
+    id: 20,
+    title: "Gülistan Doku soruşturmasında yeni gelişme",
+    summary: "Gülistan Doku soruşturması kapsamında tutuklu sayısının 32'ye yükseldiği bildirildi.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "15:50",
+    source: "GÜNORA",
+    image: "/images/news/gulistan-doku.jpg",
+    featured: false
+  },
+
+  {
+    id: 21,
+    title: "Putin'den Ukrayna açıklaması",
+    summary: "Rusya Devlet Başkanı Vladimir Putin, Rusya ile Ukrayna arasında anlaşmaya varılması için şans bulunduğunu söyledi.",
+    category: "Dünya",
+    date: "3 Eylül 2026",
+    time: "16:38",
+    source: "GÜNORA",
+    image: "/images/news/putin.jpg",
+    featured: true
+  },
+
+  {
+    id: 22,
+    title: "Libya'da petrol deposuna İHA saldırısı",
+    summary: "Libya'nın başkenti Trablus'ta bir petrol deposuna insansız hava aracı saldırısı düzenlendi.",
+    category: "Dünya",
+    date: "3 Eylül 2026",
+    time: "16:15",
+    source: "GÜNORA",
+    image: "/images/news/libya.jpg",
+    featured: false
+  },
+
+  {
+    id: 23,
+    title: "Almanya'da savunma şirketi önünde kundaklama girişimi",
+    summary: "Almanya'da bir savunma sanayii şirketinin önünde kundaklama girişimi yaşandı.",
+    category: "Dünya",
+    date: "3 Eylül 2026",
+    time: "16:26",
+    source: "GÜNORA",
+    image: "/images/news/almanya.jpg",
+    featured: false
+  },
+
+  {
+    id: 24,
+    title: "İran'dan uluslararası başvuru",
+    summary: "İran Kızılayı, Hürmüzgan'daki bir düğün evine yönelik saldırıyla ilgili konuyu Uluslararası Ceza Mahkemesi Savcılığına taşıdı.",
+    category: "Dünya",
+    date: "3 Eylül 2026",
+    time: "16:10",
+    source: "GÜNORA",
+    image: "/images/news/iran.jpg",
+    featured: false
+  },
+
+  {
+    id: 25,
+    title: "ABD ve Sri Lanka'dan ortak operasyon",
+    summary: "ABD ve Sri Lanka makamlarının Pakistan merkezli olduğu belirtilen bir uyuşturucu şebekesine yönelik operasyon gerçekleştirdiği bildirildi.",
+    category: "Dünya",
+    date: "3 Eylül 2026",
+    time: "14:45",
+    source: "GÜNORA",
+    image: "/images/news/abd-srilanka.jpg",
+    featured: false
+  },
+
+  {
+    id: 26,
+    title: "Hafta sonu hava durumu belli oluyor",
+    summary: "Türkiye genelinde hafta sonu sıcak hava etkisini sürdürürken bazı bölgelerde yerel sağanak yağış bekleniyor.",
+    category: "Yaşam",
+    date: "3 Eylül 2026",
+    time: "16:53",
+    source: "GÜNORA",
+    image: "/images/news/hava-durumu.jpg",
+    featured: true
+  },
+
+  {
+    id: 27,
+    title: "Kişisel verileri koruyamayan şirkete ceza",
+    summary: "Kişisel verilerin korunmasına ilişkin yükümlülükleri yerine getirmeyen bir şirkete 1 milyon lira idari para cezası uygulandı.",
+    category: "Teknoloji",
+    date: "3 Eylül 2026",
+    time: "11:11",
+    source: "GÜNORA",
+    image: "/images/news/kisisel-veri.jpg",
+    featured: false
+  },
+
+  {
+    id: 28,
+    title: "Meyve suyu sektöründe yeni dönem",
+    summary: "Meyve suyu ürünlerinde tatlandırıcı kullanımına ilişkin yeni düzenleme taslağı gündeme geldi.",
+    category: "Yaşam",
+    date: "3 Eylül 2026",
+    time: "14:00",
+    source: "GÜNORA",
+    image: "/images/news/meyve-suyu.jpg",
+    featured: false
+  },
+
+  {
+    id: 29,
+    title: "Eylül ayında gündem yoğun",
+    summary: "Yeni ayla birlikte ekonomi, eğitim, spor ve siyasette vatandaşların yakından takip edeceği birçok gelişme gündemde.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "09:30",
+    source: "GÜNORA",
+    image: "/images/news/eylul-gundemi.jpg",
+    featured: false
+  },
+
+  {
+    id: 30,
+    title: "Türkiye'nin gündeminde yoğun gün",
+    summary: "Türkiye'de bugün ekonomi, spor ve gündem başlıkları öne çıkarken yeni gelişmeler yakından takip ediliyor.",
+    category: "Gündem",
+    date: "3 Eylül 2026",
+    time: "17:00",
+    source: "GÜNORA",
+    image: "/images/news/gunun-ozeti.jpg",
+    featured: false
+  }
+];
       </div>
 
     </div>
