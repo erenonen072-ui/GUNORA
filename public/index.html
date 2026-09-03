@@ -510,10 +510,38 @@
 
     "use strict";
 
-    const NEWS = Array.isArray(window.GUNORA_NEWS)
-      ? window.GUNORA_NEWS
-      : [];
+let NEWS = [];
 
+async function loadNews() {
+  try {
+    const response = await fetch("/api/news");
+
+    if (!response.ok) {
+      throw new Error("API bağlantısı başarısız: " + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!data.success || !Array.isArray(data.news)) {
+      throw new Error("API geçerli haber verisi döndürmedi.");
+    }
+
+    NEWS = data.news;
+
+    console.log("GÜNORA canlı haber:", NEWS.length);
+
+    renderHero();
+    renderBreaking();
+    renderNewsGrid();
+    renderPopular();
+    renderCategories();
+
+  } catch (error) {
+    console.error("GÜNORA haber API hatası:", error);
+  }
+}
+
+loadNews();
     const $ = (selector) => document.querySelector(selector);
 
     const escapeHTML = (value) => {
